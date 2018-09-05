@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-cephfs-test-1
+  annotations:
+  labels:
+    storage-type: cephfs
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+#  - ReadOnlyMany
+#  - ReadWriteOnce
+  - ReadWriteMany
+#  claimRef:
+#    kind: PersistentVolumeClaim
+#    name: pvc-cephfs-prometheus
+#    namespace: test-paas-monitoring
+  flexVolume:
+    driver: srcb/cephfs
+    options:
+      monitors: ceph-mon1:6789,ceph-mon2:6789,ceph-mon3:6789,ceph-mon4:6789,ceph-mon5:6789
+      authid: 'admin'
+      mds: 'Data_Intelligence_Labfs'
+      keyring: 'AQDeUgJbJgwNMhAAnzeW5LwQSwqMyWs7Zvl5cQ=='
+      rights: 'rw'
+      mounttype: 'ceph-fuse'
+      size: '500M'
+      share: '/'
+  # Comment out the line above an      share: '/'
+  # from a secret on the namespace
+  # secretRef:
+  #   name: keyring
+  persistentVolumeReclaimPolicy: Retain
+

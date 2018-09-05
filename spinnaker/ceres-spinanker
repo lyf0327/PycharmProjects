@@ -1,0 +1,184 @@
+version: 1.5
+type: service
+metadata:
+  name: spinnakerTEST
+  labels:
+    scope: dev
+    version: 0.1
+roles:
+  - name: igor
+    replicas: 1
+    type: docker
+    image: gcr.io/spinnaker-marketplace/igor:0.9.0-20180221133510
+    volumes:
+      persistent:
+      - {name: spinnakertest, mount_path: /opt/spinnaker, mode: rw, size_mb: 2048, type: shared}
+    config:
+      deployment_timeout: 300
+    resources:
+      cpu: 1
+      memory_mb: 1024
+    constraint:
+      placement: optimistic
+    update:
+      max_parallel: 33%
+      policy: recreate
+    security:
+      privileged: true
+
+
+  - name: redis
+    replicas: 1
+    type: docker
+    image: registry-dbelt.samsungcloud.org/bitnami/redis:4.0.6-r1
+    config:
+      deployment_timeout: 300
+    resources:
+      cpu: 1
+      memory_mb: 1024
+    env:
+      REDIS_PASSWORD: cloudpi
+    constraint:
+      placement: optimistic
+    update:
+      max_parallel: 33%
+      policy: recreate
+    security:
+      privileged: true
+
+
+  - name: front50
+    replicas: 1
+    type: docker
+    image: registry-dbelt.samsungcloud.org/gcr.io/spinnaker-marketplace/front50:0.9.0-20180221133510
+    volumes:
+      persistent:
+      - {name: spinnakertest, mount_path: /opt/spinnaker, mode: rw, size_mb: 2048, type: shared}
+    config:
+      deployment_timeout: 300
+    resources:
+      cpu: 1
+      memory_mb: 1024
+    env:
+      providers.aws.simpleDBEnabled: true
+      services.front50.cassandra.enabled: false
+      services.front50.s3.enabled: true
+    constraint:
+      placement: optimistic
+    update:
+      max_parallel: 33%
+      policy: recreate
+    security:
+      privileged: true
+    task_event_handlers:
+      pre_start:
+        script_path: >
+          sh -exc "cp -af /opt/spinnaker/.aws /root/"
+        timeout: 300
+
+  - name: clouddriver
+    replicas: 1
+    type: docker
+    image: mhcvs2/spinnaker-clouddriver:20180803-085043
+    volumes:
+      persistent:
+      - {name: spinnakertest, mount_path: /opt/spinnaker, mode: rw, size_mb: 2048, type: shared}
+    config:
+      deployment_timeout: 300
+    resources:
+      cpu: 3
+      memory_mb: 4096
+    env:
+      AWS_ACCESS_KEY_ID: AKIAJ4LJRNPFOPAG5JOQ
+      AWS_SECRET_KEY: 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
+    constraint:
+      placement: optimistic
+    update:
+      max_parallel: 33%
+      policy: recreate
+    security:
+      privileged: true
+
+  - name: rosco
+    replicas: 1
+    type: docker
+    image: registry-dbelt.samsungcloud.org/gcr.io/spinnaker-marketplace/rosco:0.5.0-20180221133510
+    volumes:
+      persistent:
+      - {name: spinnakertest, mount_path: /opt/spinnaker, mode: rw, size_mb: 2048, type: shared}
+    config:
+      deployment_timeout: 300
+    resources:
+      cpu: 1
+      memory_mb: 1024
+    constraint:
+      placement: optimistic
+    update:
+      max_parallel: 33%
+      policy: recreate
+    security:
+      privileged: true
+
+  - name: gate
+    replicas: 1
+    type: docker
+    image: registry-dbelt.samsungcloud.org/gcr.io/spinnaker-marketplace/gate:0.10.0-20180221133510
+    volumes:
+      persistent:
+      - {name: spinnakertest, mount_path: /opt/spinnaker, mode: rw, size_mb: 2048, type: shared}
+    config:
+      deployment_timeout: 300
+    resources:
+      cpu: 1
+      memory_mb: 2048
+    constraint:
+      placement: optimistic
+    update:
+      max_parallel: 33%
+      policy: recreate
+    security:
+      privileged: true
+
+  - name: deck
+    replicas: 1
+    type: docker
+    image: registry-dbelt.samsungcloud.org/gcr.io/spinnaker-marketplace/deck:2.1.0-20180221143146
+    volumes:
+      persistent:
+      - {name: spinnakertest, mount_path: /opt/spinnaker, mode: rw, size_mb: 2048, type: shared}
+    config:
+      deployment_timeout: 300
+    env:
+      API_HOST: http://gate-1.spinnakertest.srcb.ceres.local:8084/
+      DECK_HOST: 0.0.0.0
+      DECK_PORT: 9000
+    resources:
+      cpu: 1
+      memory_mb: 2048
+    constraint:
+      placement: optimistic
+    update:
+      max_parallel: 33%
+      policy: recreate
+    security:
+      privileged: true
+
+  - name: orca
+    replicas: 1
+    type: docker
+    image: registry-dbelt.samsungcloud.org/gcr.io/spinnaker-marketplace/orca:0.10.0-20180221133510
+    volumes:
+      persistent:
+      - {name: spinnakertest, mount_path: /opt/spinnaker, mode: rw, size_mb: 2048, type: shared}
+    config:
+      deployment_timeout: 300
+    resources:
+      cpu: 1
+      memory_mb: 1024
+    constraint:
+      placement: optimistic
+    update:
+      max_parallel: 33%
+      policy: recreate
+    security:
+      privileged: true

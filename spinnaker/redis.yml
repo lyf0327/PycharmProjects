@@ -1,0 +1,28 @@
+version: 1.5
+type: service
+metadata:
+  name: lyftest
+  labels:
+    scope: dev
+    version: 0.1
+roles:
+  - name: hello
+    replicas: 1
+    type: docker
+    image: ubuntu
+    volumes:
+      persistent:
+      - {name: spinnakertest, mount_path: /opt/spinnaker, mode: rw, size_mb: 2048, type: shared}
+      - {name: spinnakerCeres, mount_path: /opt/spinnaker2, mode: rw, size_mb: 100, type: shared}
+    config:
+      deployment_timeout: 300
+    resources:
+      cpu: 1
+      memory_mb: 1024
+    constraint:
+      placement: optimistic
+    update:
+      max_parallel: 33%
+      policy: recreate
+    security:
+      privileged: true

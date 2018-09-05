@@ -1,0 +1,55 @@
+server:
+  port: ${services.clouddriver.port:7002}
+  address: 0.0.0.0
+
+#default:
+#  account:
+#    env: lyf-aws-account
+services:
+  front50:
+    baseUrl: http://front50-1.spinnakertest.srcb.ceres.local:8080
+kubernetes:
+  enabled: false
+  accounts:
+    - name: default
+      providerVersion: v1
+      serviceAccount: true
+      dockerRegistries:
+        - accountName: dockerhub
+
+dockerRegistry:
+  enabled: true
+  accounts:
+    - name: dockerhub
+      address: https://index.docker.io
+      repositories:
+        - library/alpine
+        - library/ubuntu
+        - library/centos
+        - library/nginx
+
+aws:
+  enabled: true
+  accounts:
+    - name: lyf-aws-account
+#      regions:
+#        - name: us-west-2
+      providerVersion: V1
+      accountId: '874523492089'
+      assumeRole: role/spinnakerManaged
+      eddaEnabled: true
+      edda: http://edda.{{region}}.host.net:7001
+  primaryAccount: lyf-aws-account
+  defaultKeyPairTemplate: '{{name}}-keypair'
+  defaultRegions:
+    - name: us-west-2
+  defaults:
+    iamRole: BaseIAMRole
+  client:
+    maxErrorRetry: 30
+    addSpinnakerUserToUserAgent: true
+
+
+redis:
+  enabled: true
+  connection: ${services.redis.connection:redis://localhost:6379}
