@@ -2,7 +2,7 @@
 src=/opt/nysa/downloads
 des=/rsync-s3
 usr=root
-ip1=52.82.42.11
+ip1=*****
 ip2=
 cd ${src}
 [ -e /tmp/fd1 ] || mkfifo /tmp/fd1
