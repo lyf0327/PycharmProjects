@@ -1,1 +1,1 @@
-print ("hello\n to check")
+print "hello"
