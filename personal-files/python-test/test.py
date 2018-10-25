@@ -1,1 +1,2 @@
-print "hello"
+a= 'd'
+print 'ddfad',a
