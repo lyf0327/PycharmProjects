@@ -1,0 +1,97 @@
+
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+systemctl stop firewalld
+systemctl disable firewalld
+export http_proxy=http://109.105.4.17:8119
+export https_proxy=http://109.105.4.17:8119
+
+yum -y install wget ntp vim epel-release
+#升级内核
+
+wget http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el7/x86_64/RPMS/kernel-ml-4.14.3-1.el7.elrepo.x86_64.rpm
+wget http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el7/x86_64/RPMS/kernel-ml-devel-4.14.3-1.el7.elrepo.x86_64.rpm
+rpm -ivh kernel-ml-4.14.3-1.el7.elrepo.x86_64.rpm kernel-ml-devel-4.14.3-1.el7.elrepo.x86_64.rpm
+grub2-set-default "CentOS Linux (4.14.3-1.el7.elrepo.x86_64) 7 (Core)"
+
+
+
+
+#装驱动
+wget http://cn.download.nvidia.com/tesla/390.46/nvidia-diag-driver-local-repo-rhel7-390.46-1.0-1.x86_64.rpm  #k20
+wget http://cn.download.nvidia.com/tesla/396.26/nvidia-diag-driver-local-repo-rhel7-396.26-1.0-1.x86_64.rpm  #k80 and p40
+
+rpm -i nvidia-diag-driver-local-repo-rhel7-390.46-1.0-1.x86_64.rpm #k20
+rpm -i nvidia-diag-driver-local-repo-rhel7-396.26-1.0-1.x86_64.rpm  #k80 and p40
+yum -y install dkms
+yum clean all
+yum install cuda-drivers -y
+
+
+
+cat <<EOF >/etc/yum.repos.d/CentOS-Base.repo
+[base]
+name=CentOS-$releasever - Base - 163.com
+baseurl=http://mirrors.163.com/centos/$releasever/os/$basearch/
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os
+gpgcheck=1
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7
+#released updates
+[updates]
+name=CentOS-$releasever - Updates - 163.com
+baseurl=http://mirrors.163.com/centos/$releasever/updates/$basearch/
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates
+gpgcheck=1
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7
+#additional packages that may be useful
+[extras]
+name=CentOS-$releasever - Extras - 163.com
+baseurl=http://mirrors.163.com/centos/$releasever/extras/$basearch/
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras
+gpgcheck=1
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-$releasever - Plus - 163.com
+baseurl=http://mirrors.163.com/centos/$releasever/centosplus/$basearch/
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus
+gpgcheck=1
+enabled=0
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7
+#contrib - packages by Centos Users
+[contrib]
+name=CentOS-$releasever - Contrib - 163.com
+baseurl=http://mirrors.163.com/centos/$releasever/contrib/$basearch/
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=contrib
+gpgcheck=1
+enabled=0
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7
+EOF
+
+cat <<EOF >/etc/yum.repos.d/163.repo
+[163repo]
+name=linux redhat 163.repo
+baseurl=http://mirrors.163.com/centos/7/os/x86_64/（这里选择163的源，这里是Redhat7的源）
+gpgcheck=0
+enabled=1
+EOF
+
+cat <<EOF >/etc/yum.repos.d/ceph.repo
+[ceph]
+name=ceph
+baseurl=http://download.ceph.com/rpm-luminous/el7/x86_64/
+gpgcheck=0
+[ceph-noarch]
+name=cephnoarch
+baseurl=http://download.ceph.com/rpm-luminous/el7/noarch/
+gpgcheck=0
+[ceph-source]
+name=cephsource
+baseurl=http://download.ceph.com/rpm-luminous/el7/x86_64/
+gpgcheck=0
+[ceph-radosgw]
+name=cephradosgw
+baseurl=http://download.ceph.com/rpm-luminous/el7/x86_64/
+gpgcheck=0
+EOF
+
+yum install ceph-radosgw ceph -y
