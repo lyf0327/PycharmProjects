@@ -1,0 +1,56 @@
+一、tell方式设置
+调整配置使用命令：
+1.调整mon的参数
+
+#ceph tell mon.* injectargs '--{tunable value_to_be_set}'
+
+
+2.调整osd的参数
+
+#ceph tell osd.* injectargs '--{tunable value_to_be_set}'
+
+
+3.调整mds的参数
+
+#ceph tell mds.* injectargs '--{tunable value_to_be_set}'
+
+
+例子：
+
+[root@lab5134 ~]# ceph tell mon.* injectargs '--mon_osd_report_timeout 400'
+injectargs:mon_osd_report_timeout = '400'
+
+
+除了上面的tell的方式调整，还可以使用daemon的方式进行设置
+
+二、daemon方式设置
+1、获取当前的参数
+
+[root@lab5134 ~]# ceph daemon osd.1 config get mon_osd_full_ratio
+{
+"mon_osd_full_ratio": "0.98"
+}
+
+
+2、修改配置
+[root@lab5134 ~]# ceph daemon osd.1 config set mon_osd_full_ratio 0.97
+{
+"success": "mon_osd_full_ratio = '0.97' "
+}
+
+
+3、检查配置
+
+[root@lab5134 ~]# ceph daemon osd.1 config get mon_osd_full_ratio
+{
+"mon_osd_full_ratio": "0.97"
+}
+
+
+    注意重启进程后配置会恢复到默认参数，在进行在线调整后，如果这个参数是后续是需要使用的，那么就需要将相关的参数写入到配置文件ceph.conf当中
+
+两种设置的使用场景
+
+    使用tell的方式适合对整个集群进行设置，使用*号进行匹配，就可以对整个集群的角色进行设置，而出现节点异常无法设置时候，只会在命令行当中进行报错，不太便于查找
+
+    使用daemon进行设置的方式就是一个个的去设置，这样可以比较好的反馈，这个设置是需要在设置的角色所在的主机上进行设置，daemon的方式还提供通过asok去获取到进行的其他的信息，可以使用 ceph daemon osd.1 help去查询相关的可以使用的命令.
