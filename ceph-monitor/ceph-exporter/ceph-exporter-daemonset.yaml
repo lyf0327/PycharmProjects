@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    app: ceph-exporter
+    pod-template-generation: "1"
+  name: ceph-exporter
+spec:
+  template:
+    metadata:
+      labels:
+        app: ceph-exporter
+    spec:
+      containers:
+      - image: registry.bst-1.cns.bstjpc.com:5000/digitalocean/ceph_exporter:latest
+        imagePullPolicy: IfNotPresent
+        name: ceph-exporter
+        resources:
+          limits:
+            cpu: 100m
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        volumeMounts:
+        - mountPath: /etc/ceph
+          name: ceph-conf
+      hostNetwork: true
+      nodeName: k8s-master-1   #Ceph宿主机的ip
+      nodeSelector:
+        kubernetes.io/hostname: k8s-master-1  #Ceph宿主机的ip
+      restartPolicy: Always
+      serviceAccount: default
+      serviceAccountName: default
+      volumes:
+      - hostPath:
+          path: /etc/ceph
+        name: ceph-conf
