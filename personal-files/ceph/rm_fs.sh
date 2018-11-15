@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 ceph_mon="109.105.1.253 109.105.1.254 109.105.1.246"
 ceph_fs=Machine_Learning_Labfs
-read -p "will you rebuild or delete the  cephfs? (rebuild/delete)" answer
+read -p "did you have umount all the $ceph_fs? (yes/no)" myanswer
+if [ "${myanswer}" != "yes" ]
+then
+    echo "you must umount all the $ceph_fs"
+    exit 1
+fi
+
+read -p "will you rebuild or delete  $ceph_fs? (rebuild/delete)" answer
 cat <<EOF >./mds_stop.sh
 mds_id=\$(ls /var/lib/ceph/mds/)
 for i in \$mds_id
