@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d49bf675-c511-4727-87f0-6231428427a3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/personal-files/ceph/fio_ansible.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal-files/ceph/rm_fs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/personal-files/ceph/rm_fs.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +32,7 @@
           <entry key="ceph-crush-map3" value="2" />
           <entry key="ceph-crush-map4" value="1" />
           <entry key="flexvolume_cephfs" value="2" />
-          <entry key="sh" value="7" />
+          <entry key="sh" value="9" />
           <entry key="yaml" value="3" />
           <entry key="yml" value="2" />
           <entry key="新机ceph配置" value="1" />
@@ -40,7 +40,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Bash" value="7" />
+          <entry key="Bash" value="9" />
           <entry key="PLAIN_TEXT" value="9" />
           <entry key="YAML" value="7" />
         </counts>
@@ -52,12 +52,12 @@
           <entry key="ceph-crush-map2" value="60" />
           <entry key="ceph-crush-map3" value="62" />
           <entry key="ceph-crush-map4" value="36" />
-          <entry key="sh" value="1365" />
+          <entry key="sh" value="1366" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Bash" value="1365" />
+          <entry key="Bash" value="1366" />
           <entry key="PLAIN_TEXT" value="158" />
           <entry key="Python" value="41" />
           <entry key="YAML" value="1" />
@@ -108,11 +108,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/personal-files/ceph/rm_fs.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="38">
               <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/personal-files/shell/fio.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/personal-files/ceph/fio_ansible.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -157,6 +175,7 @@
         <option value="$PROJECT_DIR$/personal-files/ceph/新机ceph配置" />
         <option value="$PROJECT_DIR$/personal-files/ceph/ceph-crush-map4" />
         <option value="$PROJECT_DIR$/personal-files/ceph/rm_fs.sh" />
+        <option value="$PROJECT_DIR$/personal-files/ceph/fio_ansible.sh" />
       </list>
     </option>
   </component>
@@ -215,6 +234,12 @@
               <item name="personal-files" type="462c0819:PsiDirectoryNode" />
               <item name="k8s" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="PycharmProjects" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PycharmProjects" type="462c0819:PsiDirectoryNode" />
+              <item name="personal-files" type="462c0819:PsiDirectoryNode" />
+              <item name="shell" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -257,10 +282,10 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.29424462" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.29424462" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.33189034" />
+      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.17604618" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32900432" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.61904764" />
@@ -288,13 +313,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/personal-files/k8s/etcd.yml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/personal-files/shell/fio.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-end-line="8" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/personal-files/shell/osd-disk.sh">
       <provider selected="true" editor-type-id="text-editor">
@@ -385,8 +403,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/personal-files/ceph/rm_fs.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="38">
           <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/personal-files/shell/fio.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/personal-files/ceph/fio_ansible.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
         </state>
       </provider>
     </entry>
