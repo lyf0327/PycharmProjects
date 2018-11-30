@@ -57,7 +57,7 @@ domount() {
         fi
         TYPE=$(echo $2 | jq -r '.mounttype')
         debug "$TYPE"
-        if [[ "$TYPE"x == "null"x ]] || [[ "$TYPE"x == x ]] ; then
+        if [[ "$TYPE"x == "null"x ]] || [[ "$TYPE"x == x ]] || [[ "$TYPE"x == "ceph-fuse"x ]]  ; then
             TYPE='mount'
         fi
         debug "$TYPE"
@@ -135,7 +135,7 @@ domount() {
     fi
 
         mkdir -p ${TMPDIR}${SHARE}
-        if [ "${SHARE}" != "/" ];then
+        if [ "${SHARE}" != "/" ] && [ "$TYPE"x == "ceph-fuse-add"x ];then
             debug "quota command:"
             debug "setfattr -n ceph.quota.max_bytes -v ${SIZE} ${TMPDIR}${SHARE}"
             setfattr -n ceph.quota.max_bytes -v ${SIZE} ${TMPDIR}${SHARE}
@@ -163,7 +163,7 @@ domount() {
         fi
         log "{\"status\": \"Success\"}"
         exit 0
-     elif [[ "$TYPE"x == "ceph-fuse"x ]];then
+     elif [[ "$TYPE"x == "ceph-fuse-add"x ]];then
         debug "ceph-fuse command:"
         debug "ceph-fuse -o $RIGHTS ${MNTPATH} --id=${AUTH_ID} --conf=/etc/ceph/ceph.conf --keyring=${KEYRING_PATH2}  --client_mds_namespace=${MDS} --client-mountpoint=${SHARE}"
         output=$(ceph-fuse -o $RIGHTS ${MNTPATH} --id=${AUTH_ID} --conf=/etc/ceph/ceph.conf --keyring=${KEYRING_PATH2} --client_mds_namespace=${MDS} --client-mountpoint=${SHARE} 2>&1)
