@@ -12,6 +12,8 @@ if [ "$1" == "$2" ] && [ "$3" == "--yes-i-really-really-mean-it" ]
 then
     OSD=$1
     i=${OSD##*.}
+    Node=`ceph osd tree|awk '{print $4}'|egrep  "node|osd.$i" |sed -n "/osd.$i/{x;p};h"`
+    ssh $Node "systemctl stop ceph-osd@$i"
     ceph osd crush remove osd.$i
     ceph osd out osd.$i
     ceph osd rm osd.$i

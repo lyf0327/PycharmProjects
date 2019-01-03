@@ -29,6 +29,7 @@ spec:
       nodeName: k8s-master-1   #Ceph宿主机的ip
       nodeSelector:
         kubernetes.io/hostname: k8s-master-1  #Ceph宿主机的ip
+#       elasticsearch: true
       restartPolicy: Always
       serviceAccount: default
       serviceAccountName: default
