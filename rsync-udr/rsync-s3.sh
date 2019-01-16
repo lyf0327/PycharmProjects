@@ -9,7 +9,7 @@ exec 3<>/tmp/fd1
 rm -rf /tmp/fd1
 for ((i=1;i<=3;i++))
 do
-      echo >&3
+   echo >&3
 done
 
 #/usr/bin/inotifywait -mrq --format  '%Xe %w%f' -e modify,create,delete,attrib,close_write,move ./ | while read file

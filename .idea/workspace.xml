@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d49bf675-c511-4727-87f0-6231428427a3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/personal-files/ceph/ansible_ceph.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal-files/python-test/int_sort.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal-files/shell/rsync_to_ceph.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal-files/ceph/man_fs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/personal-files/ceph/man_fs.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal-files/python-test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/personal-files/python-test/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal-files/shell/rsync_to_ceph.sh" beforeDir="false" afterPath="$PROJECT_DIR$/personal-files/shell/rsync_to_sgi.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rsync-udr/rsync-s3.sh" beforeDir="false" afterPath="$PROJECT_DIR$/rsync-udr/rsync-s3.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +22,8 @@
     <session id="1010443518">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="24" />
-          <entry key="project.open.time.0" value="17" />
+          <entry key="project.closed" value="25" />
+          <entry key="project.open.time.0" value="18" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.2" value="1" />
@@ -34,7 +32,7 @@
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.35" value="1" />
           <entry key="project.open.time.8" value="3" />
-          <entry key="project.opened" value="30" />
+          <entry key="project.opened" value="31" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -71,13 +69,13 @@
           <entry key="ceph-crush-map4" value="36" />
           <entry key="flexvolume_cephfs" value="37" />
           <entry key="py" value="1369" />
-          <entry key="sh" value="2770" />
+          <entry key="sh" value="3207" />
           <entry key="yaml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Bash" value="2770" />
+          <entry key="Bash" value="3207" />
           <entry key="PLAIN_TEXT" value="195" />
           <entry key="Python" value="1410" />
           <entry key="YAML" value="3" />
@@ -92,11 +90,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/personal-files/ceph/ansible_ceph.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -105,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/personal-files/ceph/rm_osd.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="22" column="2" lean-forward="true" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
+              <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -113,24 +111,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/personal-files/ceph/man_fs.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
+            <state relative-caret-position="1071">
+              <caret line="63" column="43" selection-start-line="61" selection-start-column="4" selection-end-line="63" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/personal-files/shell/rsync_to_ceph.sh">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/personal-files/shell/rsync_to_sgi.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="119">
+              <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rsync-udr/rsync-s3.sh">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="43" column="16" lean-forward="true" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="16" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -174,11 +176,13 @@
         <option value="$PROJECT_DIR$/personal-files/python-test/test.py" />
         <option value="$PROJECT_DIR$/personal-files/python-test/Dockerfile" />
         <option value="$PROJECT_DIR$/personal-files/shell/VD_Check/rsync_to_ceph.sh" />
-        <option value="$PROJECT_DIR$/personal-files/shell/rsync_to_ceph.sh" />
         <option value="$PROJECT_DIR$/personal-files/shell/hh.sh" />
         <option value="$PROJECT_DIR$/personal-files/ceph/ansible.sh" />
         <option value="$PROJECT_DIR$/personal-files/ceph/man_fs.sh" />
         <option value="$PROJECT_DIR$/personal-files/ceph/ansible_ceph.sh" />
+        <option value="$PROJECT_DIR$/personal-files/shell/rsync_to_ceph.sh" />
+        <option value="$PROJECT_DIR$/rsync-udr/rsync-s3.sh" />
+        <option value="$PROJECT_DIR$/personal-files/shell/rsync_to_sgi.sh" />
       </list>
     </option>
   </component>
@@ -224,6 +228,12 @@
               <item name="PycharmProjects" type="462c0819:PsiDirectoryNode" />
               <item name="personal-files" type="462c0819:PsiDirectoryNode" />
               <item name="python-test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PycharmProjects" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PycharmProjects" type="462c0819:PsiDirectoryNode" />
+              <item name="personal-files" type="462c0819:PsiDirectoryNode" />
+              <item name="shell" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -363,10 +373,10 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.30557802" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.31123686" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.19854015" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.19854015" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32756132" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.61904764" />
@@ -543,34 +553,38 @@
     <entry file="file://$PROJECT_DIR$/personal-files/shell/rsync_udr.sh">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/personal-files/shell/rsync_to_ceph.sh">
+    <entry file="file://$PROJECT_DIR$/personal-files/ceph/ansible_ceph.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rsync-udr/rsync-s3.sh">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/personal-files/ceph/rm_osd.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="22" column="2" lean-forward="true" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
+          <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="22" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/personal-files/ceph/man_fs.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
+        <state relative-caret-position="1071">
+          <caret line="63" column="43" selection-start-line="61" selection-start-column="4" selection-end-line="63" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/personal-files/ceph/ansible_ceph.sh">
+    <entry file="file://$PROJECT_DIR$/rsync-udr/rsync-s3.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="425">
+          <caret line="43" column="16" lean-forward="true" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/personal-files/shell/rsync_to_sgi.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
         </state>
       </provider>
     </entry>
