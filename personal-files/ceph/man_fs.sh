@@ -59,9 +59,9 @@ EOF
 }
 
 help(){
-    echo "Usage: man_fs.sh build cephfs"
-    echo "       man_fs.sh rebuild cephfs"
-    echo "       man_fs.sh delete cephfs"
+    echo "Usage: man_fs.sh build <cephfs>"
+    echo "       man_fs.sh rebuild <cephfs>"
+    echo "       man_fs.sh delete <cephfs>"
 }
 
 case $1 in
