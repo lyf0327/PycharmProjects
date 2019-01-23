@@ -1,0 +1,40 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    pv.kubernetes.io/bound-by-controller: "yes"
+#  creationTimestamp: 2018-06-22T03:46:12Z
+  finalizers:
+  - kubernetes.io/pv-protection
+  name: intelligence-data-lab-common
+#  resourceVersion: "52109746"
+#  selfLink: /api/v1/persistentvolumes/intelligence-data-lab-common
+#  uid: ce61bfb7-75ce-11e8-9014-801844e171e4
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Ti
+#  claimRef:
+#    apiVersion: v1
+#    kind: PersistentVolumeClaim
+#    name: intelligence-data-lab-common
+#    namespace: intelligence-data-lab
+#    resourceVersion: "10697111"
+#    uid: ce65e711-75ce-11e8-9014-801844e171e4
+  flexVolume:
+    driver: srcb/cephfs
+    options:
+      authid: admin
+      keyring: AQDeUgJbJgwNMhAAnzeW5LwQSwqMyWs7Zvl5cQ==
+      mds: Data_Intelligence_Labfs
+      monitors: ceph-mon1:6789,ceph-mon2:6789,ceph-mon3:6789,ceph-mon4:6789,ceph-mon5:6789
+      share: /common
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+#status:
+#  phase: Released

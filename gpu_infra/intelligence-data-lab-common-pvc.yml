@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    pv.kubernetes.io/bind-completed: "yes"
+#  creationTimestamp: 2018-06-22T03:46:12Z
+  finalizers:
+  - kubernetes.io/pvc-protection
+  name: intelligence-data-lab-common
+  namespace: intelligence-data-lab
+#  resourceVersion: "10697205"
+#  selfLink: /api/v1/namespaces/intelligence-data-lab/persistentvolumeclaims/intelligence-data-lab-common
+#  uid: ce65e711-75ce-11e8-9014-801844e171e4
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Ti
+  volumeMode: Filesystem
+  volumeName: intelligence-data-lab-common
+#status:
+#  accessModes:
+#  - ReadWriteMany
+#  capacity:
+#    storage: 1Ti
+#  phase: Bound
