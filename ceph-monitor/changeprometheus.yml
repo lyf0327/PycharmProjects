@@ -1,0 +1,8 @@
+serverFiles:
+  prometheus.yml:
+    scrape_configs:
+      - job_name: 'ceph-monitoring'
+        static_configs:
+          - targets: ['ceph-exporter:9128']
+            labels:
+              instance: ceph-exporter:9128

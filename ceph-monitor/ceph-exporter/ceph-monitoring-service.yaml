@@ -15,21 +15,21 @@ spec:
   selector:
     app: ceph-exporter
   type: ClusterIP
----
-apiVersion: monitoring.coreos.com/v1alpha1
-kind: ServiceMonitor
-metadata:
-  labels:
-    app: ceph-exporter
-  name: ceph-exporter
-  namespace: monitoring
-spec:
-  endpoints:
-  - interval: 10s
-    port: web
-  namespaceSelector:
-    matchNames:
-    - monitoring
-  selector:
-    matchLabels:
-      app: ceph-exporter
+#---
+#apiVersion: monitoring.coreos.com/v1alpha1
+#kind: ServiceMonitor
+#metadata:
+#  labels:
+#    app: ceph-exporter
+#  name: ceph-exporter
+#  namespace: monitoring
+#spec:
+#  endpoints:
+#  - interval: 10s
+#    port: web
+#  namespaceSelector:
+#    matchNames:
+#    - monitoring
+#  selector:
+#    matchLabels:
+#      app: ceph-exporter

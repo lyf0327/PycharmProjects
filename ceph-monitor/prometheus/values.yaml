@@ -821,9 +821,9 @@ serverFiles:
             regex: default;kubernetes;https
       - job_name: 'ceph-monitoring'
         static_configs:
-          - targets: ['109.105.1.245:9128']
+          - targets: ['ceph-exporter:9128']
             labels:
-              instance: 109.105.1.245:9128
+              instance: ceph-exporter:9128
       - job_name: 'kubernetes-nodes'
 
         # Default to scraping over https. If required, just disable this or change to

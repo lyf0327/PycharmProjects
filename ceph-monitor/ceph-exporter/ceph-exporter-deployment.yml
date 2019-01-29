@@ -1,11 +1,12 @@
 apiVersion: extensions/v1beta1
-kind: DaemonSet
+kind: Deployment
 metadata:
   labels:
     app: ceph-exporter
     pod-template-generation: "1"
   name: ceph-exporter
 spec:
+  replicas: 1
   template:
     metadata:
       labels:
@@ -25,11 +26,11 @@ spec:
         volumeMounts:
         - mountPath: /etc/ceph
           name: ceph-conf
-      hostNetwork: true
-      nodeName: 109.105.1.245   #Ceph宿主机的ip
+#      hostNetwork: true
+#      nodeName: 109.105.1.245   #Ceph宿主机的ip
       nodeSelector:
-        kubernetes.io/hostname: k8s-master-1  #Ceph宿主机的ip
-#        elasticsearch: true
+#        kubernetes.io/hostname: k8s-master-1  #Ceph宿主机的ip
+        elasticsearch: 'true'
       restartPolicy: Always
       serviceAccount: default
       serviceAccountName: default
