@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 Host=ceph-nodes
-Date(){
-    ansible $Host -m command -a 'date'
+Command(){
+    ansible $Host -m command -a "$cmd"
 }
 
 copy_cephfs(){
@@ -22,8 +22,13 @@ help(){
 }
 
 case $1 in
-    "date")
-        Date
+    "command")
+        if [ "$1" == "command" ]
+        then
+            shift 1
+            cmd="$*"
+        fi
+        Command
         ;;
     "copy")
         case $2 in
@@ -46,6 +51,3 @@ case $1 in
         help
         ;;
 esac
-
-
-

@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d49bf675-c511-4727-87f0-6231428427a3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ceph-monitor/ceph-exporter/ceph-exporter-deployment.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ceph-monitor/changeprometheus.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/personal-files/shell/docker_image_download.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ceph-monitor/ceph-exporter/ceph-exporter-daemonset.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ceph-monitor/ceph-exporter/ceph-exporter-daemonset.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ceph-monitor/ceph-exporter/ceph-monitoring-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ceph-monitor/ceph-exporter/ceph-monitoring-service.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ceph-monitor/prometheus/values.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ceph-monitor/prometheus/values.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal-files/shell/hh.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/personal-files/shell/rsync_to_sgi.sh" beforeDir="false" afterPath="$PROJECT_DIR$/personal-files/shell/rsync_to_sgi.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/personal-files/ceph/ansible_ceph.sh" beforeDir="false" afterPath="$PROJECT_DIR$/personal-files/ceph/ansible_ceph.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +44,7 @@
           <entry key="flexvolume_cephfs" value="5" />
           <entry key="json" value="2" />
           <entry key="py" value="10" />
-          <entry key="sh" value="31" />
+          <entry key="sh" value="32" />
           <entry key="yaml" value="13" />
           <entry key="yml" value="11" />
           <entry key="新机ceph配置" value="1" />
@@ -60,7 +52,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Bash" value="31" />
+          <entry key="Bash" value="32" />
           <entry key="Dockerfile" value="1" />
           <entry key="JSON" value="1" />
           <entry key="PLAIN_TEXT" value="12" />
@@ -78,14 +70,14 @@
           <entry key="ceph-crush-map4" value="36" />
           <entry key="flexvolume_cephfs" value="37" />
           <entry key="py" value="1525" />
-          <entry key="sh" value="3708" />
+          <entry key="sh" value="3709" />
           <entry key="yaml" value="96" />
           <entry key="yml" value="54" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Bash" value="3708" />
+          <entry key="Bash" value="3709" />
           <entry key="PLAIN_TEXT" value="195" />
           <entry key="Python" value="1566" />
           <entry key="YAML" value="151" />
@@ -113,7 +105,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/personal-files/shell/docker_image_download.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -125,8 +117,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gpu_infra/cephfs-190117.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2805">
-              <caret line="165" column="39" selection-start-line="165" selection-start-column="26" selection-end-line="165" selection-end-column="39" />
+            <state relative-caret-position="51">
+              <caret line="3" column="19" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/personal-files/ceph/ansible_ceph.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
             </state>
           </provider>
         </entry>
@@ -176,7 +177,6 @@
         <option value="$PROJECT_DIR$/personal-files/shell/VD_Check/rsync_to_ceph.sh" />
         <option value="$PROJECT_DIR$/personal-files/ceph/ansible.sh" />
         <option value="$PROJECT_DIR$/personal-files/ceph/man_fs.sh" />
-        <option value="$PROJECT_DIR$/personal-files/ceph/ansible_ceph.sh" />
         <option value="$PROJECT_DIR$/personal-files/shell/rsync_to_ceph.sh" />
         <option value="$PROJECT_DIR$/rsync-udr/rsync-s3.sh" />
         <option value="$PROJECT_DIR$/gpu_infra/cephfs-190117.sh" />
@@ -192,6 +192,7 @@
         <option value="$PROJECT_DIR$/ceph-monitor/prometheus/values.yaml" />
         <option value="$PROJECT_DIR$/personal-files/shell/rsync_to_sgi.sh" />
         <option value="$PROJECT_DIR$/personal-files/shell/docker_image_download.sh" />
+        <option value="$PROJECT_DIR$/personal-files/ceph/ansible_ceph.sh" />
       </list>
     </option>
   </component>
@@ -230,6 +231,12 @@
               <item name="PycharmProjects" type="b2602c69:ProjectViewProjectNode" />
               <item name="PycharmProjects" type="462c0819:PsiDirectoryNode" />
               <item name="personal-files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PycharmProjects" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PycharmProjects" type="462c0819:PsiDirectoryNode" />
+              <item name="personal-files" type="462c0819:PsiDirectoryNode" />
+              <item name="ceph" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PycharmProjects" type="b2602c69:ProjectViewProjectNode" />
@@ -383,12 +390,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1287" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.21827" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21827" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.46715328" />
+      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.1620438" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32756132" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.61904764" />
@@ -581,13 +589,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/personal-files/ceph/ansible_ceph.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/personal-files/shell/rsync_udr.sh">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -674,17 +675,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gpu_infra/cephfs-190117.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2805">
-          <caret line="165" column="39" selection-start-line="165" selection-start-column="26" selection-end-line="165" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/personal-files/shell/docker_image_download.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gpu_infra/cephfs-190117.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/personal-files/ceph/ansible_ceph.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
