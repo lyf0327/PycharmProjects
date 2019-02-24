@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: monitoring-gpugrafana
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        task: monitoring
+        k8s-app: gpugrafana
+    spec:
+      containers:
+      - name: gpugrafana
+        image: registry.gcloud.srcb.com/registry.cn-hangzhou.aliyuncs.com/acs/grafana:5.0.4-gpu-monitoring
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+      volumes:
+      - name: gpugrafana-storage
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: monitoring-gpugrafana
+spec:
+  ports:
+  - port: 80
+    targetPort: 3000
+  type: LoadBalancer
+  selector:
+    k8s-app: gpugrafana
