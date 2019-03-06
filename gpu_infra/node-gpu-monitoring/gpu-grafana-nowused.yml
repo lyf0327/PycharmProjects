@@ -72,7 +72,7 @@
               },
               {
                 "name": "GF_AUTH_ANONYMOUS_ENABLED",
-                "value": "true"
+                "value": "false"
               },
               {
                 "name": "GF_AUTH_ANONYMOUS_ORG_ROLE",
