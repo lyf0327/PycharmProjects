@@ -1,0 +1,100 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    app: mongodb
+    chart: mongodb-3.0.0
+    heritage: Tiller
+    release: mongodb-dev
+  name: mongodb-dev
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: mongodb
+      release: mongodb-dev
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: mongodb
+        release: mongodb-dev
+    spec:
+      containers:
+      - env:
+        - name: MONGODB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: mongodb-root-password
+              name: mongodb-dev
+        - name: MONGODB_USERNAME
+          value: scream
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: mongodb-password
+              name: mongodb-dev
+        - name: MONGODB_DATABASE
+          value: scream
+        - name: MONGODB_EXTRA_FLAGS
+        image: registry.bst-1.cns.bstjpc.com:5000/bitnami/mongodb:3.6.5
+        imagePullPolicy: Always
+        livenessProbe:
+          exec:
+            command:
+            - mongo
+            - --eval
+            - db.adminCommand('ping')
+          failureThreshold: 6
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: mongodb-dev
+        ports:
+        - containerPort: 27017
+          name: mongodb
+          protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+            - mongo
+            - --eval
+            - db.adminCommand('ping')
+          failureThreshold: 6
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: "2"
+            memory: 4Gi
+          requests:
+            cpu: 500m
+            memory: 512Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /bitnami/mongodb
+          name: data
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        role: master
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: mongodb-dev
+

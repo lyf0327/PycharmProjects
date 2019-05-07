@@ -1,0 +1,56 @@
+# Default values for dev-situation.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+labName: Intelligent Data Lab
+userName: hongchao.ma
+project: default
+image:
+  repository: registry.bst-1.cns.bstjpc.com:5000/bvlc/caffe-sshd
+  tag: gpu
+  pullPolicy: Always
+
+cpu: "1"
+memory: "5Gi"
+gpu: {}
+#gpu:
+#  k20m: 1
+#  p40: 1
+#  k80-1: 1
+
+
+nodeSelector:
+  usage: "dev"
+
+tolerations: []
+
+affinity: {}
+
+volumes:
+- name: bin
+  hostPath:
+    path: /usr/lib/nvidia-384/bin
+- name: lib
+  hostPath:
+    path: /usr/lib/nvidia-384
+
+volumeMounts:
+- name: bin
+  mountPath: /usr/local/nvidia/bin
+- name: lib
+  mountPath: /usr/local/nvidia/lib
+
+flexVolume:
+  driver: srcb/cephfs
+  options:
+    monitors: ceph-mon1:6789,ceph-mon2:6789,ceph-mon3:6789,ceph-mon4:6789,ceph-mon5:6789
+    authid: 'admin'
+    mds: 'Data_Intelligence_Labfs'
+    keyring: 'AQDeUgJbJgwNMhAAnzeW5LwQSwqMyWs7Zvl5cQ=='
+    rights: 'rw'
+
+admin: false
+
+ssd:
+  enabled: false
+  pvcName: ""

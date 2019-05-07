@@ -2,7 +2,7 @@
   "annotations": {
     "list": [
       {
-        "$$hashKey": "object:3707",
+        "$$hashKey": "object:1343",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -13,12 +13,11 @@
       }
     ]
   },
-  "description": "SGI节点GPU监控",
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 12,
-  "iteration": 1556022406330,
+  "id": 17,
+  "iteration": 1555036058310,
   "links": [],
   "panels": [
     {
@@ -36,16 +35,16 @@
         "maxValue": 100,
         "minValue": 0,
         "show": true,
-        "thresholdLabels": false,
+        "thresholdLabels": true,
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 6,
-        "w": 3,
+        "h": 9,
+        "w": 8,
         "x": 0,
         "y": 0
       },
-      "id": 21,
+      "id": 16,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -82,176 +81,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "$$hashKey": "object:4433",
-          "expr": "avg (sum (nvidia_gpu_memory_used_bytes{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) / sum (nvidia_gpu_memory_total_bytes{node_name=~\"$gpu_node\", uuid=~\"$GPU\"})) * 100",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "50,80",
-      "title": "AVG Memory Util",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "prometheus",
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 3,
-        "x": 3,
-        "y": 0
-      },
-      "id": 19,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "$$hashKey": "object:4059",
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "$$hashKey": "object:4060",
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "$$hashKey": "object:3957",
-          "expr": "avg (nvidia_gpu_duty_cycle{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) ",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "50,80",
-      "timeShift": null,
-      "title": "AVG Duty Cycle",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "$$hashKey": "object:4062",
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "prometheus",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 3,
-        "x": 6,
-        "y": 0
-      },
-      "id": 4,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "$$hashKey": "object:3835",
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "$$hashKey": "object:3836",
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "$$hashKey": "object:3779",
-          "expr": "avg (nvidia_gpu_temperature_celsius{node_name=~\"$gpu_node\"})",
+          "expr": "sum(nvidia_gpu_num_devices{used=\"true\"})/sum(nvidia_gpu_num_devices)*100",
           "format": "time_series",
           "groupBy": [
             {
@@ -268,7 +98,7 @@
             }
           ],
           "intervalFactor": 1,
-          "legendFormat": "nvidia_gpu_temperature_celsius",
+          "legendFormat": "",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -290,14 +120,12 @@
           "tags": []
         }
       ],
-      "thresholds": "40,60,70",
-      "timeFrom": null,
-      "title": "Avg Temperature",
+      "thresholds": "50,80,100",
+      "title": "GPU USAGE PERCENTAGE",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:3838",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -306,68 +134,53 @@
       "valueName": "avg"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
+      "columns": [],
       "datasource": "prometheus",
-      "format": "mwatt",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
+      "fontSize": "100%",
       "gridPos": {
-        "h": 6,
-        "w": 3,
-        "x": 9,
+        "h": 9,
+        "w": 16,
+        "x": 8,
         "y": 0
       },
-      "id": 12,
-      "interval": null,
+      "id": 14,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
+      "pageSize": 10,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": null,
+        "desc": false
+      },
+      "styles": [
         {
-          "name": "value to text",
-          "value": 1
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "link": false,
+          "pattern": "Time",
+          "type": "date"
         },
         {
-          "name": "range to text",
-          "value": 2
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "preserveFormat": false,
+          "sanitize": false,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
         }
       ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
       "targets": [
         {
-          "expr": "sum (nvidia_gpu_power_usage_milliwatts)",
-          "format": "time_series",
+          "expr": "count(nvidia_gpu_duty_cycle{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}) by (project)",
+          "format": "table",
           "groupBy": [
             {
               "params": [
@@ -382,6 +195,8 @@
               "type": "fill"
             }
           ],
+          "instant": false,
+          "interval": "1d",
           "intervalFactor": 1,
           "orderByTime": "ASC",
           "policy": "default",
@@ -404,18 +219,9 @@
           "tags": []
         }
       ],
-      "thresholds": "",
-      "title": "Total Power Usage",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "title": "PROJECT GPU USAGE",
+      "transform": "table",
+      "type": "table"
     },
     {
       "aliasColors": {},
@@ -425,39 +231,43 @@
       "datasource": "prometheus",
       "fill": 1,
       "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 0
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 9
       },
       "id": 2,
       "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
         "show": true,
+        "sideWidth": 800,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "minSpan": 8,
-      "nullPointMode": "null as zero",
+      "nullPointMode": "null",
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
       "repeat": null,
-      "repeatDirection": "v",
+      "repeatDirection": "h",
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (nvidia_gpu_num_devices)",
+          "expr": "count(nvidia_gpu_duty_cycle{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}) ",
           "format": "time_series",
           "groupBy": [
             {
@@ -473,9 +283,8 @@
               "type": "fill"
             }
           ],
-          "interval": "5s",
           "intervalFactor": 1,
-          "legendFormat": "totall",
+          "legendFormat": "TOTAL GPU USAGE",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -497,22 +306,29 @@
           "tags": []
         },
         {
-          "expr": "sum (nvidia_gpu_num_devices{node_name=~\"$gpu_node\"})",
+          "expr": "count(nvidia_gpu_duty_cycle{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}) by (pod_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "$gpu_node",
           "refId": "B"
+        },
+        {
+          "expr": "count(nvidia_gpu_duty_cycle{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}) by (node_name, uuid)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "C"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "GPU Number Per Node",
+      "title": "GPU USAGE",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
+      "transparent": false,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -527,7 +343,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
@@ -548,25 +364,28 @@
       "datasource": "prometheus",
       "fill": 1,
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 8,
+        "w": 24,
         "x": 0,
-        "y": 6
+        "y": 17
       },
       "id": 8,
       "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
         "show": true,
+        "sideWidth": 800,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null as zero",
+      "nullPointMode": "null",
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -577,7 +396,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (nvidia_gpu_duty_cycle{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) /\nsum (nvidia_gpu_num_devices{node_name=~\"$gpu_node\"})",
+          "expr": "sum (nvidia_gpu_duty_cycle) /\nsum (nvidia_gpu_num_devices)",
           "format": "time_series",
           "groupBy": [
             {
@@ -593,234 +412,9 @@
               "type": "fill"
             }
           ],
-          "hide": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "AVG GPU  Duty Cycle",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Totall GPU AVG Duty Cycle",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "prometheus",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 6
-      },
-      "id": 16,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "avg(nvidia_gpu_duty_cycle{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) by (uuid, node_name)",
-          "format": "time_series",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "intervalFactor": 1,
-          "legendFormat": "{{uuid}}  {{node_name}}",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "GPU Duty Cycle",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "prometheus",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 15
-      },
-      "id": 17,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum (nvidia_gpu_memory_used_bytes) / \nsum (nvidia_gpu_memory_total_bytes) * 100",
-          "format": "time_series",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "intervalFactor": 1,
-          "legendFormat": "Toall-Nodes",
+          "legendFormat": "AVERAGE DURTY BY SELECTED",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -842,327 +436,533 @@
           "tags": []
         },
         {
-          "expr": "sum (nvidia_gpu_memory_used_bytes{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) /\nsum (nvidia_gpu_memory_total_bytes{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) * 100 ",
+          "expr": "avg (nvidia_gpu_duty_cycle{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}) by (pod_name)",
           "format": "time_series",
           "intervalFactor": 1,
-          "legendFormat": "[[gpu_node]]",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Total GPU  AVG Memory Util",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": null,
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "prometheus",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 15
-      },
-      "id": 14,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum (nvidia_gpu_memory_used_bytes) / \nsum (nvidia_gpu_memory_total_bytes) * 100",
-          "format": "time_series",
-          "hide": true,
-          "intervalFactor": 1,
-          "legendFormat": "Avg Memory usage",
+          "legendFormat": "",
           "refId": "B"
         },
         {
-          "expr": "avg(nvidia_gpu_memory_used_bytes{node_name=~\"$gpu_node\", uuid=~\"$GPU\"} / \nnvidia_gpu_memory_total_bytes{node_name=~\"$gpu_node\", uuid=~\"$GPU\"} * 100) by (uuid, node_name)",
+          "expr": "sum (nvidia_gpu_duty_cycle{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}) by (node_name, uuid)",
           "format": "time_series",
-          "hide": false,
           "intervalFactor": 1,
-          "legendFormat": "{{uuid}}  ({{node_name}})",
-          "refId": "C"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Memory Usage",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 2,
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "prometheus",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 24
-      },
-      "id": 10,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "avg (nvidia_gpu_temperature_celsius)",
-          "format": "time_series",
-          "hide": true,
-          "instant": false,
-          "intervalFactor": 1,
-          "legendFormat": "Avg Temperature",
-          "refId": "B"
-        },
-        {
-          "expr": "avg(nvidia_gpu_temperature_celsius{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) by (uuid, node_name)",
-          "format": "time_series",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": "{{uuid}}  ({{node_name}})",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "GPU Temperature",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "prometheus",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 24
-      },
-      "id": 6,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum (nvidia_gpu_power_usage_milliwatts)",
-          "format": "time_series",
-          "hide": true,
-          "intervalFactor": 1,
-          "legendFormat": "Total Power Usage",
-          "refId": "B"
-        },
-        {
-          "expr": "avg (nvidia_gpu_power_usage_milliwatts)",
-          "format": "time_series",
-          "hide": true,
-          "intervalFactor": 1,
-          "legendFormat": "Avg Power Usage",
+          "legendFormat": "",
           "refId": "C"
         },
         {
-          "expr": "avg(nvidia_gpu_power_usage_milliwatts{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) by (uuid,node_name)",
+          "expr": "sum (nvidia_gpu_duty_cycle{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}) /\nsum (nvidia_gpu_num_devices{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\"})",
           "format": "time_series",
-          "hide": false,
           "intervalFactor": 1,
-          "legendFormat": "{{uuid}}  {{node_name}}",
           "refId": "D"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Power Usage",
+      "title": "DURTY CYCLE",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "decimals": null,
+      "fill": 1,
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "id": 4,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 800,
+        "sort": null,
+        "sortDesc": null,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum (nvidia_gpu_memory_total_bytes{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"})",
+          "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "intervalFactor": 1,
+          "legendFormat": "Total memory",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "expr": "sum (nvidia_gpu_memory_used_bytes{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"})",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "Used memory",
+          "refId": "B"
+        },
+        {
+          "expr": "sum (nvidia_gpu_memory_used_bytes{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}) by (node_name,uuid)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "TOTAL MEMORY",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "decimals": null,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "decimals": null,
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 35
+      },
+      "id": 6,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 800,
+        "sort": "current",
+        "sortDesc": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(sum(nvidia_gpu_memory_used_bytes{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"})/sum(nvidia_gpu_memory_total_bytes{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}))",
+          "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "intervalFactor": 1,
+          "legendFormat": "MEMORY PERCENTAGE BY SELECED ",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "MEMORY USAGE PERCENRTAGE",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": "1",
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 44
+      },
+      "id": 12,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 800,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "avg (nvidia_gpu_temperature_celsius{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}) ",
+          "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "intervalFactor": 1,
+          "legendFormat": "AVERAGE GPU TEMPERATURE SELECTED ",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "expr": "avg (nvidia_gpu_temperature_celsius{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}) by (pod_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "B"
+        },
+        {
+          "expr": "\navg (nvidia_gpu_temperature_celsius{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}) by (node_name, uuid)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "TEMPERATURE",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 52
+      },
+      "id": 10,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 800,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum (nvidia_gpu_power_usage_milliwatts{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"})",
+          "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "intervalFactor": 1,
+          "legendFormat": "TOTAL POWER",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "expr": "sum (nvidia_gpu_power_usage_milliwatts{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\", user=~\"$user\", pod_name=~\"$pod_name\", used=\"true\"}) by (node_name,uuid)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "POWER USAGE",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1196,7 +996,6 @@
       ]
     }
   ],
-  "refresh": false,
   "schemaVersion": 16,
   "style": "dark",
   "tags": [],
@@ -1206,18 +1005,16 @@
         "allValue": null,
         "current": {
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
         "datasource": "prometheus",
         "hide": 0,
         "includeAll": true,
         "label": null,
         "multi": true,
-        "name": "gpu_node",
+        "name": "node_name",
         "options": [],
-        "query": "label_values(nvidia_gpu_num_devices, node_name)",
+        "query": "label_values(nvidia_gpu_memory_used_bytes, node_name)",
         "refresh": 2,
         "regex": "",
         "sort": 0,
@@ -1238,9 +1035,9 @@
         "includeAll": true,
         "label": null,
         "multi": true,
-        "name": "GPU",
+        "name": "namespace_name",
         "options": [],
-        "query": "label_values(nvidia_gpu_memory_used_bytes{node_name=~\"$gpu_node\"}, uuid)",
+        "query": "label_values(nvidia_gpu_memory_total_bytes{node_name=~\"$node_name\"},namespace_name)",
         "refresh": 2,
         "regex": "",
         "sort": 0,
@@ -1248,12 +1045,81 @@
         "tags": [],
         "tagsQuery": "",
         "type": "query",
-        "useTags": true
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "project",
+        "options": [],
+        "query": "label_values(nvidia_gpu_memory_total_bytes{node_name=~\"$node_name\",namespace_name=~\"$namespace_name\"}, project)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "user",
+        "options": [],
+        "query": "label_values(nvidia_gpu_memory_total_bytes{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\", project=~\"$project\"}, user)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "pod_name",
+        "options": [],
+        "query": "label_values(nvidia_gpu_memory_used_bytes{node_name=~\"$node_name\", namespace_name=~\"$namespace_name\",project=~\"$project\",user=~\"$user\"}, pod_name)",
+        "refresh": 2,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -1282,7 +1148,7 @@
     ]
   },
   "timezone": "",
-  "title": "SGI节点GPU监控",
-  "uid": "UO7qaNhmz",
-  "version": 2
+  "title": "SGI App Monitor",
+  "uid": "Eo079E3iz",
+  "version": 13
 }

@@ -1,0 +1,135 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ .Release.Name | replace "." "-" }}
+  labels:
+    app: {{ template "dev-situation.name" . }}
+    chart: {{ template "dev-situation.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+{{- with .Values.gpu }}
+{{- range $i, $v := . }}
+    gpu_type: "{{ $i }}"
+    gpu_count: "{{ $v }}"
+    gpu_use: "true"
+{{- end }}
+{{- end }}
+    project: {{ .Values.project }}
+  namespace: {{ lower .Values.labName | splitList " " | join "-" }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ template "dev-situation-old.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "dev-situation-old.name" . }}
+        release: {{ .Release.Name }}
+        type: gpu-infra
+        lab: {{ lower .Values.labName | splitList " " | join "-" }}
+        user: {{ lower .Values.userName | splitList " " | join "-" | replace "." "-" }}
+        project: {{ .Values.project }}
+{{- with .Values.gpu }}
+{{- range $i, $v := . }}
+        gpu_type: "{{ $i }}"
+        gpu_count: "{{ $v }}"
+        gpu_use: "true"
+{{- end }}
+{{- end }}
+    spec:
+      hostIPC: true
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+{{- if not .Values.gpu }}
+          env:
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: ""
+{{- else }}
+          env:
+            - name: NCCL_P2P_DISABLE
+              value: "1"
+            - name: NCCL_SHM_DISABLE
+              value: "0"
+{{- end }}
+          ports:
+          - containerPort: 22
+          - containerPort: 8888
+          resources:
+            requests:
+              cpu: "{{ .Values.cpu }}"
+              memory: {{ .Values.memory }}
+            limits:
+{{- with .Values.gpu }}
+{{- range $i, $v := . }}
+              nvidia.com/gpu-{{ $i }}: "{{ $v }}"
+{{- end }}
+{{- end }}
+{{- if or (hasKey .Values.gpu "k80") (hasKey .Values.gpu "k80-1") }}
+              cpu: "32"
+              memory: "216Gi"
+{{- else if hasKey .Values.gpu "p40" }}
+              cpu: "38"
+              memory: "324Gi"
+{{- else if hasKey .Values.gpu "m40" }}
+              cpu: "32"
+              memory: "216Gi"
+{{- else }}
+              cpu: "32"
+              memory: "55Gi"
+{{- end }}
+          volumeMounts:
+          - mountPath: /root/.ssh_config
+            name: ssh-key
+          - mountPath: /data
+            name: data-pv
+          - mountPath: /common-data
+            name: common-data-pv
+{{- if .Values.ssd.enabled }}
+          - mountPath: /ssd
+            name: ssd
+{{- end }}
+{{- with .Values.volumeMounts }}
+{{ toYaml . | indent 10 }}
+{{- end }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+      volumes:
+      - name: ssh-key
+        configMap:
+          name: {{ lower .Values.userName | splitList " " | join "-" | replace "." "-" }}
+          items:
+          - key: ssh_public_key
+            path: authorized_keys
+      - name: data-pv
+{{- if .Values.admin  }}
+        hostPath:
+          path: '/mnt/{{ .Values.flexVolume.options.mds }}'
+{{- else }}
+        hostPath:
+          path: '/mnt/{{ .Values.flexVolume.options.mds }}/{{ lower .Values.userName | splitList " " | join "-" }}'
+{{- end }}
+      - name: common-data-pv
+        hostPath:
+          path: '/mnt/{{ .Values.flexVolume.options.mds }}/common'
+{{- if .Values.ssd.enabled }}
+      - name: ssd
+        persistentVolumeClaim:
+          claimName: {{ .Values.ssd.pvcName }}
+{{- end }}
+{{- with .Values.volumes }}
+{{ toYaml . | indent 6 }}
+{{- end }}

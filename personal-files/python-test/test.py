@@ -1,8 +1,11 @@
 #!/usr/bin/python
 # -*- coding:UTF-8 -*-
-for n in range(100,999):
-    x = n / 100
-    y = n / 10 % 10
-    z = n % 10
-    if n == x ** 3 +y ** 3 +z ** 3:
-        print n
+from sys import argv
+script, filename = argv
+txt=open(filename)
+print txt.read()
+file_again=raw_input("> ")
+txg_again=open(file_again)
+print txg_again.read()
+txt.close()
+txg_again.close()

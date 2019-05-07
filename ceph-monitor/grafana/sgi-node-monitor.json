@@ -1,0 +1,1300 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "$$hashKey": "object:1110",
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 18,
+  "iteration": 1555035900524,
+  "links": [],
+  "panels": [
+    {
+      "columns": [],
+      "datasource": "prometheus",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "preserveFormat": true,
+          "sanitize": true,
+          "type": "date"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "link": false,
+          "pattern": "/.*/",
+          "preserveFormat": false,
+          "sanitize": false,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "sum(nvidia_gpu_num_devices{node_name=~\"$node_name\"}) by (node_name)",
+          "format": "table",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "instant": false,
+          "interval": "1d",
+          "intervalFactor": 1,
+          "legendFormat": "TOTAL",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "expr": "sum(nvidia_gpu_num_devices{node_name=~\"$node_name\", used=\"true\"}) by (node_name)",
+          "format": "table",
+          "interval": "1d",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "B"
+        }
+      ],
+      "title": "GPU NUMBER PER NODE",
+      "transform": "table",
+      "transparent": false,
+      "type": "table"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "id": 10,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum (nvidia_gpu_duty_cycle{node_name=~\"$node_name\", uuid=~\"$uuid\"}) /\nsum (nvidia_gpu_num_devices{node_name=~\"$node_name\"})",
+          "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "intervalFactor": 1,
+          "legendFormat": "TOTAL GPU AVG DUTY CYCLE",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "TOTAL GPU AVG DUTY CYCLE",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 16,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 800,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(nvidia_gpu_memory_total_bytes{node_name=~\"$node_name\", uuid=~\"$uuid\"}) by (node_name, uuid)",
+          "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "intervalFactor": 1,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "expr": "sum(nvidia_gpu_memory_used_bytes{node_name=~\"$node_name\", uuid=~\"$uuid\"}) by (node_name, uuid)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "TOTAL MEMORY AND USED MEMORY",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "decbytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 14,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 800,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum (nvidia_gpu_memory_used_bytes) / \nsum (nvidia_gpu_memory_total_bytes) * 100",
+          "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "intervalFactor": 1,
+          "legendFormat": "TOTAL USAGE PERCENTAGE",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "expr": "sum (nvidia_gpu_memory_used_bytes{node_name=~\"$node_name\", uuid=~\"$uuid\"}) /\nsum (nvidia_gpu_memory_total_bytes{node_name=~\"$node_name\", uuid=~\"$uuid\"}) * 100",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "PERCENTAGE OF SELECTED NODE AND GPU",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "TOTAL GPU  AVG MEMORY UTIL",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "id": 12,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 800,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "avg(nvidia_gpu_duty_cycle{node_name=~\"$node_name\", uuid=~\"$uuid\"}) by (node_name)",
+          "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "intervalFactor": 1,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "expr": "sum(nvidia_gpu_duty_cycle{node_name=~\"$node_name\", uuid=~\"$uuid\"}) by (node_name, uuid)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "AVG GPU Duty Cycle",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 40
+      },
+      "id": 6,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 800,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum (nvidia_gpu_power_usage_milliwatts{node_name=~\"$node_name\", uuid=~\"$uuid\"})",
+          "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "intervalFactor": 1,
+          "legendFormat": "TOTAL OF SELECTED NODE AND GPU",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "expr": "sum (nvidia_gpu_power_usage_milliwatts{node_name=~\"$node_name\", uuid=~\"$uuid\"}) by (node_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "B"
+        },
+        {
+          "expr": "sum (nvidia_gpu_power_usage_milliwatts{node_name=~\"$node_name\", uuid=~\"$uuid\"}) by (node_name, uuid)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "POWER USAGE",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "mwatt",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 48
+      },
+      "id": 4,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 800,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "avg(nvidia_gpu_temperature_celsius{node_name=~\"$node_name\", uuid=~\"$uuid\"}) ",
+          "format": "time_series",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "intervalFactor": 1,
+          "legendFormat": "TOTAL OF SELECTED NODE AND GPU",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "expr": "avg(nvidia_gpu_temperature_celsius{node_name=~\"$node_name\", uuid=~\"$uuid\"}) by (node_name)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "B"
+        },
+        {
+          "expr": "avg(nvidia_gpu_temperature_celsius{node_name=~\"$node_name\", uuid=~\"$uuid\"}) by (node_name, uuid)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "TEMPERATURE",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "celsius",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 16,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "node_name",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "node193",
+            "value": "node193"
+          },
+          {
+            "selected": false,
+            "text": "node180",
+            "value": "node180"
+          },
+          {
+            "selected": false,
+            "text": "node177",
+            "value": "node177"
+          },
+          {
+            "selected": false,
+            "text": "node182",
+            "value": "node182"
+          },
+          {
+            "selected": false,
+            "text": "node176",
+            "value": "node176"
+          }
+        ],
+        "query": "label_values(nvidia_gpu_num_devices, node_name)",
+        "refresh": 0,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "uuid",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "GPU-d84f3ea2-de0d-36b1-9726-2a33e3634b31",
+            "value": "GPU-d84f3ea2-de0d-36b1-9726-2a33e3634b31"
+          },
+          {
+            "selected": false,
+            "text": "GPU-db6abe9d-b2f5-24af-9b3f-6c3a978bca78",
+            "value": "GPU-db6abe9d-b2f5-24af-9b3f-6c3a978bca78"
+          },
+          {
+            "selected": false,
+            "text": "GPU-1d9e5100-fb37-8f6a-3fd1-c30f31988bf7",
+            "value": "GPU-1d9e5100-fb37-8f6a-3fd1-c30f31988bf7"
+          },
+          {
+            "selected": false,
+            "text": "GPU-e589c21f-28a3-6e41-258b-acaa334c9570",
+            "value": "GPU-e589c21f-28a3-6e41-258b-acaa334c9570"
+          },
+          {
+            "selected": false,
+            "text": "GPU-2f9d92d6-d48e-a13d-8e84-e6e56ea87fb5",
+            "value": "GPU-2f9d92d6-d48e-a13d-8e84-e6e56ea87fb5"
+          },
+          {
+            "selected": false,
+            "text": "GPU-c1471803-65f1-3b0d-f9bd-26bb486f21b8",
+            "value": "GPU-c1471803-65f1-3b0d-f9bd-26bb486f21b8"
+          },
+          {
+            "selected": false,
+            "text": "GPU-1e0a34ce-e07c-9d44-25fd-8288b880d420",
+            "value": "GPU-1e0a34ce-e07c-9d44-25fd-8288b880d420"
+          },
+          {
+            "selected": false,
+            "text": "GPU-b647395e-03a7-ef62-3220-c4ea01a086f6",
+            "value": "GPU-b647395e-03a7-ef62-3220-c4ea01a086f6"
+          },
+          {
+            "selected": false,
+            "text": "GPU-f9d3c8d5-6aeb-7e53-f8a8-2481a66ff7b1",
+            "value": "GPU-f9d3c8d5-6aeb-7e53-f8a8-2481a66ff7b1"
+          },
+          {
+            "selected": false,
+            "text": "GPU-6f440629-e4c2-c240-aa86-5d9b1698832d",
+            "value": "GPU-6f440629-e4c2-c240-aa86-5d9b1698832d"
+          },
+          {
+            "selected": false,
+            "text": "GPU-8e0d744b-5b23-4f18-ffbd-8526ae79f97b",
+            "value": "GPU-8e0d744b-5b23-4f18-ffbd-8526ae79f97b"
+          },
+          {
+            "selected": false,
+            "text": "GPU-01d8b20b-77fd-0162-aaff-807b48289ddd",
+            "value": "GPU-01d8b20b-77fd-0162-aaff-807b48289ddd"
+          },
+          {
+            "selected": false,
+            "text": "GPU-e308afa3-f45b-6508-6d39-e6ff8f5c35dc",
+            "value": "GPU-e308afa3-f45b-6508-6d39-e6ff8f5c35dc"
+          },
+          {
+            "selected": false,
+            "text": "GPU-e78a6463-4183-b4bc-1c4a-021b9d86b89e",
+            "value": "GPU-e78a6463-4183-b4bc-1c4a-021b9d86b89e"
+          },
+          {
+            "selected": false,
+            "text": "GPU-bced2933-a109-1f40-b8f0-83c5ddfd5468",
+            "value": "GPU-bced2933-a109-1f40-b8f0-83c5ddfd5468"
+          },
+          {
+            "selected": false,
+            "text": "GPU-8b15243d-6ac4-edea-214d-49a7547e3b4a",
+            "value": "GPU-8b15243d-6ac4-edea-214d-49a7547e3b4a"
+          },
+          {
+            "selected": false,
+            "text": "GPU-9af6fc46-5e91-7ae5-e419-3e66af5d4762",
+            "value": "GPU-9af6fc46-5e91-7ae5-e419-3e66af5d4762"
+          },
+          {
+            "selected": false,
+            "text": "GPU-0ef1e868-fa98-9d6d-cfdd-28abbffcf580",
+            "value": "GPU-0ef1e868-fa98-9d6d-cfdd-28abbffcf580"
+          },
+          {
+            "selected": false,
+            "text": "GPU-e784d459-c797-e2fe-949d-77a424c05f65",
+            "value": "GPU-e784d459-c797-e2fe-949d-77a424c05f65"
+          },
+          {
+            "selected": false,
+            "text": "GPU-f8db742f-2372-72fd-7208-8a088f8dae5b",
+            "value": "GPU-f8db742f-2372-72fd-7208-8a088f8dae5b"
+          },
+          {
+            "selected": false,
+            "text": "GPU-d376ca0c-4159-af26-1684-d86161fe6758",
+            "value": "GPU-d376ca0c-4159-af26-1684-d86161fe6758"
+          },
+          {
+            "selected": false,
+            "text": "GPU-5dd1f669-c96c-f215-cb33-288a359cccb3",
+            "value": "GPU-5dd1f669-c96c-f215-cb33-288a359cccb3"
+          },
+          {
+            "selected": false,
+            "text": "GPU-278d5da5-05c9-431a-dab6-259b826ee308",
+            "value": "GPU-278d5da5-05c9-431a-dab6-259b826ee308"
+          },
+          {
+            "selected": false,
+            "text": "GPU-6fb47f4c-53d0-212d-1054-6dd04f3a5211",
+            "value": "GPU-6fb47f4c-53d0-212d-1054-6dd04f3a5211"
+          },
+          {
+            "selected": false,
+            "text": "GPU-ea7f88af-3dcb-504d-4938-82b21fd93d97",
+            "value": "GPU-ea7f88af-3dcb-504d-4938-82b21fd93d97"
+          },
+          {
+            "selected": false,
+            "text": "GPU-1d68a6ca-10f5-b769-969a-204654abd1ac",
+            "value": "GPU-1d68a6ca-10f5-b769-969a-204654abd1ac"
+          },
+          {
+            "selected": false,
+            "text": "GPU-6533f2e1-a3a3-4476-9562-b2e1862d2dfb",
+            "value": "GPU-6533f2e1-a3a3-4476-9562-b2e1862d2dfb"
+          },
+          {
+            "selected": false,
+            "text": "GPU-2cefecf0-978c-235d-8149-db9814e9cca0",
+            "value": "GPU-2cefecf0-978c-235d-8149-db9814e9cca0"
+          },
+          {
+            "selected": false,
+            "text": "GPU-8b1a9796-7e65-f769-c7c6-970dbd7110a3",
+            "value": "GPU-8b1a9796-7e65-f769-c7c6-970dbd7110a3"
+          },
+          {
+            "selected": false,
+            "text": "GPU-6c09f76c-457f-771e-07ce-17e742759de0",
+            "value": "GPU-6c09f76c-457f-771e-07ce-17e742759de0"
+          },
+          {
+            "selected": false,
+            "text": "GPU-63e24d64-2844-5b5a-cf78-a9f6e87cd24a",
+            "value": "GPU-63e24d64-2844-5b5a-cf78-a9f6e87cd24a"
+          },
+          {
+            "selected": false,
+            "text": "GPU-de3deac2-6e9f-e2fc-f1b0-c7a8964d8c59",
+            "value": "GPU-de3deac2-6e9f-e2fc-f1b0-c7a8964d8c59"
+          },
+          {
+            "selected": false,
+            "text": "GPU-9c5d339f-9c8d-f790-c7d6-6d37db8f5349",
+            "value": "GPU-9c5d339f-9c8d-f790-c7d6-6d37db8f5349"
+          },
+          {
+            "selected": false,
+            "text": "GPU-38908838-6da7-9285-662f-a7e70d0b646a",
+            "value": "GPU-38908838-6da7-9285-662f-a7e70d0b646a"
+          },
+          {
+            "selected": false,
+            "text": "GPU-e18b4b07-a657-5b54-26ae-440e19296b9b",
+            "value": "GPU-e18b4b07-a657-5b54-26ae-440e19296b9b"
+          },
+          {
+            "selected": false,
+            "text": "GPU-e2efa510-7de6-5338-7af0-8a9e3265c917",
+            "value": "GPU-e2efa510-7de6-5338-7af0-8a9e3265c917"
+          },
+          {
+            "selected": false,
+            "text": "GPU-8facf2a0-a7d1-c096-b6ee-56a5ec24cf9a",
+            "value": "GPU-8facf2a0-a7d1-c096-b6ee-56a5ec24cf9a"
+          },
+          {
+            "selected": false,
+            "text": "GPU-8682d779-d242-8978-430e-1eff82d8ca02",
+            "value": "GPU-8682d779-d242-8978-430e-1eff82d8ca02"
+          },
+          {
+            "selected": false,
+            "text": "GPU-055bb899-e057-5be8-eab2-8416c694fa43",
+            "value": "GPU-055bb899-e057-5be8-eab2-8416c694fa43"
+          },
+          {
+            "selected": false,
+            "text": "GPU-daa2ec43-68c8-7135-374a-589f8a176ad4",
+            "value": "GPU-daa2ec43-68c8-7135-374a-589f8a176ad4"
+          },
+          {
+            "selected": false,
+            "text": "GPU-66f03af3-f9a3-d08b-a4f2-855a8f0e1113",
+            "value": "GPU-66f03af3-f9a3-d08b-a4f2-855a8f0e1113"
+          },
+          {
+            "selected": false,
+            "text": "GPU-5b3a076b-0b60-9efe-19c5-57e35f2448e6",
+            "value": "GPU-5b3a076b-0b60-9efe-19c5-57e35f2448e6"
+          },
+          {
+            "selected": false,
+            "text": "GPU-9b6c897c-176c-90f4-42dc-964121a095d3",
+            "value": "GPU-9b6c897c-176c-90f4-42dc-964121a095d3"
+          },
+          {
+            "selected": false,
+            "text": "GPU-f7387056-f7cd-6cd6-4b12-06a462e157cd",
+            "value": "GPU-f7387056-f7cd-6cd6-4b12-06a462e157cd"
+          },
+          {
+            "selected": false,
+            "text": "GPU-87408e38-2d70-4bd5-8efa-2dc389a3c4c8",
+            "value": "GPU-87408e38-2d70-4bd5-8efa-2dc389a3c4c8"
+          },
+          {
+            "selected": false,
+            "text": "GPU-51e7255b-f3ca-8660-8cf6-ecdcb00ca664",
+            "value": "GPU-51e7255b-f3ca-8660-8cf6-ecdcb00ca664"
+          },
+          {
+            "selected": false,
+            "text": "GPU-fa019969-0bff-affb-97fa-5609d4e8a2d5",
+            "value": "GPU-fa019969-0bff-affb-97fa-5609d4e8a2d5"
+          },
+          {
+            "selected": false,
+            "text": "GPU-a0f3eacd-dc5c-4317-5c14-99fdc1c4271b",
+            "value": "GPU-a0f3eacd-dc5c-4317-5c14-99fdc1c4271b"
+          },
+          {
+            "selected": false,
+            "text": "GPU-e5b89f62-967c-bb2e-8e63-a4ebf8005e75",
+            "value": "GPU-e5b89f62-967c-bb2e-8e63-a4ebf8005e75"
+          },
+          {
+            "selected": false,
+            "text": "GPU-98e5e595-c9b7-7a8f-daf7-e5d39d09033a",
+            "value": "GPU-98e5e595-c9b7-7a8f-daf7-e5d39d09033a"
+          },
+          {
+            "selected": false,
+            "text": "GPU-2765d019-6e40-c346-68fa-080bc8788d24",
+            "value": "GPU-2765d019-6e40-c346-68fa-080bc8788d24"
+          },
+          {
+            "selected": false,
+            "text": "GPU-4707c67d-e078-d3d2-340c-5a2c15215cc9",
+            "value": "GPU-4707c67d-e078-d3d2-340c-5a2c15215cc9"
+          },
+          {
+            "selected": false,
+            "text": "GPU-41a2a40f-f03f-d8c2-6fcf-ddf4640b40b7",
+            "value": "GPU-41a2a40f-f03f-d8c2-6fcf-ddf4640b40b7"
+          },
+          {
+            "selected": false,
+            "text": "GPU-5b0b64c2-dfd3-17e2-49c4-22e6781e9ec4",
+            "value": "GPU-5b0b64c2-dfd3-17e2-49c4-22e6781e9ec4"
+          },
+          {
+            "selected": false,
+            "text": "GPU-7c29995e-d345-3665-ad44-9c2774bab78e",
+            "value": "GPU-7c29995e-d345-3665-ad44-9c2774bab78e"
+          },
+          {
+            "selected": false,
+            "text": "GPU-0d4f77d0-56ea-4718-2df6-65a0bff65575",
+            "value": "GPU-0d4f77d0-56ea-4718-2df6-65a0bff65575"
+          },
+          {
+            "selected": false,
+            "text": "GPU-97dd1ba8-0271-be63-f5d8-9bfabc0ce805",
+            "value": "GPU-97dd1ba8-0271-be63-f5d8-9bfabc0ce805"
+          },
+          {
+            "selected": false,
+            "text": "GPU-e2ff48ea-a9d6-7321-0110-85cf44a22223",
+            "value": "GPU-e2ff48ea-a9d6-7321-0110-85cf44a22223"
+          },
+          {
+            "selected": false,
+            "text": "GPU-1602bca5-c676-94f1-9c3c-43aa9af6af67",
+            "value": "GPU-1602bca5-c676-94f1-9c3c-43aa9af6af67"
+          },
+          {
+            "selected": false,
+            "text": "GPU-08b1e1fc-8249-8b11-9ffa-4f03af231cd0",
+            "value": "GPU-08b1e1fc-8249-8b11-9ffa-4f03af231cd0"
+          },
+          {
+            "selected": false,
+            "text": "GPU-51f65915-f9b7-a94e-f6cf-dcedca5d0343",
+            "value": "GPU-51f65915-f9b7-a94e-f6cf-dcedca5d0343"
+          },
+          {
+            "selected": false,
+            "text": "GPU-27768955-40a0-e68e-c849-7de791fff3ce",
+            "value": "GPU-27768955-40a0-e68e-c849-7de791fff3ce"
+          },
+          {
+            "selected": false,
+            "text": "GPU-907c0149-c638-3031-19f2-03854baba025",
+            "value": "GPU-907c0149-c638-3031-19f2-03854baba025"
+          },
+          {
+            "selected": false,
+            "text": "GPU-577b3d1c-5996-33af-7451-cccd7686adee",
+            "value": "GPU-577b3d1c-5996-33af-7451-cccd7686adee"
+          }
+        ],
+        "query": "label_values(nvidia_gpu_num_devices{node_name=~\"$node_name\"}, uuid)",
+        "refresh": 0,
+        "regex": "",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "SGI  NODE MONITOR",
+  "uid": "Udqfysqmz",
+  "version": 5
+}

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 DEBUG=${CEPHFSDEBUG:-0}
 [[ -f /.cephfsdebug ]] && DEBUG=1
@@ -128,6 +128,7 @@ domount() {
         # ceph puppet module installs the file.
         TMPDIR=$(mktemp -d)
     debug "tmp dir is $TMPDIR"
+    debug "mount -t ceph  ${MONITOR}:/ ${TMPDIR} -o mds_namespace=${MDS},name=${AUTH_ID},secretfile=${KEYRING_PATH}"
         output=$(mount -t ceph  ${MONITOR}:/ ${TMPDIR} -o mds_namespace=${MDS},name=${AUTH_ID},secretfile=${KEYRING_PATH})
     if [ $? -ne 0 ]; then
        err "{ \"status\": \"Failure\", \"message\": \"Failed to mount CephFS share $MONITOR:/ at ${TMPDIR}:${output}\"}"
@@ -135,7 +136,10 @@ domount() {
     fi
 
         mkdir -p ${TMPDIR}${SHARE}
-        if [ "${SHARE}" != "/" ] && [ "$TYPE"x == "ceph-fuse-add"x ];then
+        mkdir -p ${TMPDIR}${SHARE%/*}/common/${SHARE##*/}
+        cd ${TMPDIR}${SHARE}&&ln -s share /common-data/${SHARE##*/}
+#        if [ "${SHARE}" != "/" ] && [ "$TYPE"x == "ceph-fuse-add"x ];then
+        if [ "${SHARE}" != "/" ]; then
             debug "quota command:"
             debug "setfattr -n ceph.quota.max_bytes -v ${SIZE} ${TMPDIR}${SHARE}"
             setfattr -n ceph.quota.max_bytes -v ${SIZE} ${TMPDIR}${SHARE}
@@ -188,7 +192,7 @@ unmount() {
                 exit 0
         fi
 
-        sync && umount ${MNTPATH} &> /dev/null
+        umount -l ${MNTPATH} &> /dev/null
         if [ $? -ne 0 ]; then
                 err "{ \"status\": \"Failed\", \"message\": \"Failed to unmount volume at ${MNTPATH}\"}"
                 exit 1

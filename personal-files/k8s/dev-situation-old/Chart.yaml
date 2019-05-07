@@ -1,0 +1,13 @@
+apiVersion: v1
+appVersion: "1.0"
+description: Create dev situation in SGI
+name: dev-situation-old
+version: 0.1.0
+sources:
+- https://github.com/docker/distribution-library-image
+home: https://hub.docker.com/_/registry/
+icon: https://hub.docker.com/public/images/logos/mini-logo.svg
+maintainers:
+- email: yafeng.li@samsung.com
+  name: yafeng
+

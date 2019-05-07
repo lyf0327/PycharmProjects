@@ -2,7 +2,7 @@
   "annotations": {
     "list": [
       {
-        "$$hashKey": "object:3707",
+        "$$hashKey": "object:194",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -13,309 +13,39 @@
       }
     ]
   },
-  "description": "SGI节点GPU监控",
+  "description": "Kubernetes Node监控",
   "editable": true,
-  "gnetId": null,
+  "gnetId": 3646,
   "graphTooltip": 0,
-  "id": 12,
-  "iteration": 1556022406330,
+  "id": 3,
+  "iteration": 1555041460118,
   "links": [],
   "panels": [
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "prometheus",
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
+      "collapsed": false,
       "gridPos": {
-        "h": 6,
-        "w": 3,
+        "h": 1,
+        "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 21,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "$$hashKey": "object:4433",
-          "expr": "avg (sum (nvidia_gpu_memory_used_bytes{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) / sum (nvidia_gpu_memory_total_bytes{node_name=~\"$gpu_node\", uuid=~\"$GPU\"})) * 100",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "50,80",
-      "title": "AVG Memory Util",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "id": 13,
+      "panels": [],
+      "repeat": null,
+      "title": "Dashboard Row",
+      "type": "row"
     },
     {
       "cacheTimeout": null,
       "colorBackground": false,
       "colorValue": false,
       "colors": [
-        "#299c46",
+        "rgba(245, 54, 54, 0.9)",
         "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
+        "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "prometheus",
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 3,
-        "x": 3,
-        "y": 0
-      },
-      "id": 19,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "$$hashKey": "object:4059",
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "$$hashKey": "object:4060",
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "$$hashKey": "object:3957",
-          "expr": "avg (nvidia_gpu_duty_cycle{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) ",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "refId": "A"
-        }
-      ],
-      "thresholds": "50,80",
-      "timeShift": null,
-      "title": "AVG Duty Cycle",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "$$hashKey": "object:4062",
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "prometheus",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": true,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 3,
-        "x": 6,
-        "y": 0
-      },
-      "id": 4,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "$$hashKey": "object:3835",
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "$$hashKey": "object:3836",
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "$$hashKey": "object:3779",
-          "expr": "avg (nvidia_gpu_temperature_celsius{node_name=~\"$gpu_node\"})",
-          "format": "time_series",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "intervalFactor": 1,
-          "legendFormat": "nvidia_gpu_temperature_celsius",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": "40,60,70",
-      "timeFrom": null,
-      "title": "Avg Temperature",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "$$hashKey": "object:3838",
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "prometheus",
-      "format": "mwatt",
+      "datasource": "influxdb-datasource",
+      "format": "ms",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -324,12 +54,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 6,
-        "w": 3,
-        "x": 9,
-        "y": 0
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 1
       },
-      "id": 12,
+      "id": 5,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -366,8 +96,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "sum (nvidia_gpu_power_usage_milliwatts)",
-          "format": "time_series",
+          "dsType": "influxdb",
           "groupBy": [
             {
               "params": [
@@ -382,9 +111,11 @@
               "type": "fill"
             }
           ],
-          "intervalFactor": 1,
+          "measurement": "uptime",
           "orderByTime": "ASC",
           "policy": "default",
+          "query": "SELECT mean(\"value\")/1000 FROM \"cpu/node_capacity\" WHERE (\"type\" = 'node' AND \"nodename\" =~ /^$node$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -401,11 +132,23 @@
               }
             ]
           ],
-          "tags": []
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "node"
+            },
+            {
+              "condition": "AND",
+              "key": "nodename",
+              "operator": "=~",
+              "value": "/^$node$/"
+            }
+          ]
         }
       ],
       "thresholds": "",
-      "title": "Total Power Usage",
+      "title": "Uptime",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -415,50 +158,70 @@
           "value": "null"
         }
       ],
-      "valueName": "avg"
+      "valueName": "current"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "prometheus",
-      "fill": 1,
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(50, 172, 45, 0.97)"
+      ],
+      "datasource": "influxdb-datasource",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
       "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 0
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 1
       },
-      "id": 2,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
+      "id": 7,
+      "interval": null,
       "links": [],
-      "minSpan": 8,
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "v",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
       "targets": [
         {
-          "expr": "sum (nvidia_gpu_num_devices)",
-          "format": "time_series",
+          "dsType": "influxdb",
           "groupBy": [
             {
               "params": [
@@ -473,11 +236,11 @@
               "type": "fill"
             }
           ],
-          "interval": "5s",
-          "intervalFactor": 1,
-          "legendFormat": "totall",
+          "measurement": "cpu/node_capacity",
           "orderByTime": "ASC",
           "policy": "default",
+          "query": "SELECT mean(\"value\")/1000 FROM \"cpu/node_capacity\" WHERE (\"type\" = 'node' AND \"nodename\" =~ /^$node$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -494,624 +257,565 @@
               }
             ]
           ],
-          "tags": []
-        },
-        {
-          "expr": "sum (nvidia_gpu_num_devices{node_name=~\"$gpu_node\"})",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "$gpu_node",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "GPU Number Per Node",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "prometheus",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 6
-      },
-      "id": 8,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum (nvidia_gpu_duty_cycle{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) /\nsum (nvidia_gpu_num_devices{node_name=~\"$gpu_node\"})",
-          "format": "time_series",
-          "groupBy": [
+          "tags": [
             {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
+              "key": "type",
+              "operator": "=",
+              "value": "node"
             },
             {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
+              "condition": "AND",
+              "key": "nodename",
+              "operator": "=~",
+              "value": "/^$node$/"
             }
-          ],
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "AVG GPU  Duty Cycle",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
+          ]
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Totall GPU AVG Duty Cycle",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
+      "thresholds": "",
+      "title": "CPU Cores",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
         {
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "prometheus",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 6
-      },
-      "id": 16,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "avg(nvidia_gpu_duty_cycle{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) by (uuid, node_name)",
-          "format": "time_series",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "intervalFactor": 1,
-          "legendFormat": "{{uuid}}  {{node_name}}",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "GPU Duty Cycle",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
+      "valueName": "current"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "prometheus",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 15
-      },
-      "id": 17,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum (nvidia_gpu_memory_used_bytes) / \nsum (nvidia_gpu_memory_total_bytes) * 100",
-          "format": "time_series",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "intervalFactor": 1,
-          "legendFormat": "Toall-Nodes",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "expr": "sum (nvidia_gpu_memory_used_bytes{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) /\nsum (nvidia_gpu_memory_total_bytes{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) * 100 ",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "[[gpu_node]]",
-          "refId": "B"
-        }
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(50, 172, 45, 0.97)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(245, 54, 54, 0.9)"
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Total GPU  AVG Memory Util",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
+      "datasource": "influxdb-datasource",
+      "decimals": 0,
+      "format": "percentunit",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
         "show": true,
-        "values": []
+        "thresholdLabels": false,
+        "thresholdMarkers": true
       },
-      "yaxes": [
-        {
-          "decimals": null,
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "prometheus",
-      "fill": 1,
       "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 15
-      },
-      "id": 14,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum (nvidia_gpu_memory_used_bytes) / \nsum (nvidia_gpu_memory_total_bytes) * 100",
-          "format": "time_series",
-          "hide": true,
-          "intervalFactor": 1,
-          "legendFormat": "Avg Memory usage",
-          "refId": "B"
-        },
-        {
-          "expr": "avg(nvidia_gpu_memory_used_bytes{node_name=~\"$gpu_node\", uuid=~\"$GPU\"} / \nnvidia_gpu_memory_total_bytes{node_name=~\"$gpu_node\", uuid=~\"$GPU\"} * 100) by (uuid, node_name)",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": "{{uuid}}  ({{node_name}})",
-          "refId": "C"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Memory Usage",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 2,
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "prometheus",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 24
-      },
-      "id": 10,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "avg (nvidia_gpu_temperature_celsius)",
-          "format": "time_series",
-          "hide": true,
-          "instant": false,
-          "intervalFactor": 1,
-          "legendFormat": "Avg Temperature",
-          "refId": "B"
-        },
-        {
-          "expr": "avg(nvidia_gpu_temperature_celsius{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) by (uuid, node_name)",
-          "format": "time_series",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": "{{uuid}}  ({{node_name}})",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "GPU Temperature",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ]
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "prometheus",
-      "fill": 1,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 24
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 1
       },
       "id": 6,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "cpu/node_utilization",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\")/1000 FROM \"cpu/node_capacity\" WHERE (\"type\" = 'node' AND \"nodename\" =~ /^$node$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "node"
+            },
+            {
+              "condition": "AND",
+              "key": "nodename",
+              "operator": "=~",
+              "value": "/^$node$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": "0.75,0.9",
+      "title": "CPU Utilization",
+      "type": "singlestat",
+      "valueFontSize": "100%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(50, 172, 45, 0.97)"
+      ],
+      "datasource": "influxdb-datasource",
+      "format": "decbytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 12,
+        "y": 1
+      },
+      "id": 10,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "memory/node_capacity",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\")/1000 FROM \"cpu/node_capacity\" WHERE (\"type\" = 'node' AND \"nodename\" =~ /^$node$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "node"
+            },
+            {
+              "condition": "AND",
+              "key": "nodename",
+              "operator": "=~",
+              "value": "/^$node$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "title": "Memory Capacity",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(50, 172, 45, 0.97)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(245, 54, 54, 0.9)"
+      ],
+      "datasource": "influxdb-datasource",
+      "decimals": 0,
+      "format": "percentunit",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 16,
+        "y": 1
+      },
+      "id": 9,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "memory/node_utilization",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\")/1000 FROM \"cpu/node_capacity\" WHERE (\"type\" = 'node' AND \"nodename\" =~ /^$node$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "node"
+            },
+            {
+              "condition": "AND",
+              "key": "nodename",
+              "operator": "=~",
+              "value": "/^$node$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": "0.75,0.9",
+      "title": "Memory Utilization",
+      "type": "singlestat",
+      "valueFontSize": "100%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(50, 172, 45, 0.97)"
+      ],
+      "datasource": "influxdb-datasource",
+      "format": "decbytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 20,
+        "y": 1
+      },
+      "id": 8,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "filesystem/available",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\")/1000 FROM \"cpu/node_capacity\" WHERE (\"type\" = 'node' AND \"nodename\" =~ /^$node$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "node"
+            },
+            {
+              "condition": "AND",
+              "key": "nodename",
+              "operator": "=~",
+              "value": "/^$node$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "title": "Filesystem Available",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "id": 14,
+      "panels": [],
+      "repeat": null,
+      "title": "History",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "influxdb-datasource",
+      "fill": 1,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 7
+      },
+      "id": 1,
+      "interval": ">60s",
       "legend": {
         "avg": false,
         "current": false,
@@ -1124,7 +828,7 @@
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null as zero",
+      "nullPointMode": "null",
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1135,34 +839,60 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum (nvidia_gpu_power_usage_milliwatts)",
-          "format": "time_series",
-          "hide": true,
-          "intervalFactor": 1,
-          "legendFormat": "Total Power Usage",
-          "refId": "B"
-        },
-        {
-          "expr": "avg (nvidia_gpu_power_usage_milliwatts)",
-          "format": "time_series",
-          "hide": true,
-          "intervalFactor": 1,
-          "legendFormat": "Avg Power Usage",
-          "refId": "C"
-        },
-        {
-          "expr": "avg(nvidia_gpu_power_usage_milliwatts{node_name=~\"$gpu_node\", uuid=~\"$GPU\"}) by (uuid,node_name)",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 1,
-          "legendFormat": "{{uuid}}  {{node_name}}",
-          "refId": "D"
+          "alias": "",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "filesystem/available",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "nodename",
+              "operator": "=~",
+              "value": "/^$node$/"
+            },
+            {
+              "condition": "AND",
+              "key": "type",
+              "operator": "=",
+              "value": "node"
+            }
+          ]
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Power Usage",
+      "title": "Filesystem Available",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1178,7 +908,381 @@
       },
       "yaxes": [
         {
-          "format": "mwatt",
+          "format": "decbytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "influxdb-datasource",
+      "fill": 1,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 7
+      },
+      "id": 2,
+      "interval": ">60s",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "cpu/node_utilization",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "nodename",
+              "operator": "=~",
+              "value": "/^$node$/"
+            },
+            {
+              "condition": "AND",
+              "key": "type",
+              "operator": "=",
+              "value": "node"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "CPU Utilization",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "influxdb-datasource",
+      "fill": 1,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "id": 3,
+      "interval": ">60s",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "memory/node_utilization",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\") FROM \"memory/usage\" WHERE (\"nodename\" =~ /^$node$/ AND \"type\" = 'node') AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "nodename",
+              "operator": "=~",
+              "value": "/^$node$/"
+            },
+            {
+              "condition": "AND",
+              "key": "type",
+              "operator": "=",
+              "value": "node"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Memory Utilization",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "influxdb-datasource",
+      "fill": 1,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 12
+      },
+      "id": 12,
+      "interval": ">60s",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "uptime",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "node"
+            },
+            {
+              "condition": "AND",
+              "key": "nodename",
+              "operator": "=~",
+              "value": "/^$node$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Uptime",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "ms",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1196,29 +1300,33 @@
       ]
     }
   ],
-  "refresh": false,
+  "refresh": "30s",
   "schemaVersion": 16,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "host",
+    "kubernetes",
+    "heapster",
+    "influxdb"
+  ],
   "templating": {
     "list": [
       {
         "allValue": null,
         "current": {
-          "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "tags": [],
+          "text": "node176",
+          "value": "node176"
         },
-        "datasource": "prometheus",
+        "datasource": "influxdb-datasource",
         "hide": 0,
-        "includeAll": true,
-        "label": null,
-        "multi": true,
-        "name": "gpu_node",
+        "includeAll": false,
+        "label": "node_name",
+        "multi": false,
+        "name": "node",
         "options": [],
-        "query": "label_values(nvidia_gpu_num_devices, node_name)",
-        "refresh": 2,
+        "query": "SHOW TAG VALUES FROM \"uptime\" WITH KEY=nodename",
+        "refresh": 1,
         "regex": "",
         "sort": 0,
         "tagValuesQuery": "",
@@ -1226,34 +1334,11 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": "prometheus",
-        "hide": 0,
-        "includeAll": true,
-        "label": null,
-        "multi": true,
-        "name": "GPU",
-        "options": [],
-        "query": "label_values(nvidia_gpu_memory_used_bytes{node_name=~\"$gpu_node\"}, uuid)",
-        "refresh": 2,
-        "regex": "",
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": true
       }
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -1281,8 +1366,8 @@
       "30d"
     ]
   },
-  "timezone": "",
-  "title": "SGI节点GPU监控",
-  "uid": "UO7qaNhmz",
-  "version": 2
+  "timezone": "browser",
+  "title": "Kubernetes Node监控",
+  "uid": "000000003",
+  "version": 1
 }

@@ -10,8 +10,8 @@ then
 else
     mkdir -p /lyf/images && cd /lyf/images
     ssh -i /sshlogin/FARM-1471-5b25a9a4.cn-north-1.pem 52.80.148.5 "docker pull ${image}:${tag}\
-     &&mkdir -p /lyf &&docker save ${image}:${tag} -o /lyf/${image//\//-}.tar"
-    scp -i /sshlogin/FARM-1471-5b25a9a4.cn-north-1.pem 52.80.148.5:/lyf/${image//\//-}.tar ./
+     &&mkdir -p /data/lyf &&docker save ${image}:${tag} -o /data/lyf/${image//\//-}.tar"
+    scp -i /sshlogin/FARM-1471-5b25a9a4.cn-north-1.pem 52.80.148.5:/data/lyf/${image//\//-}.tar ./
     docker load -i ${image//\//-}.tar
     docker tag ${image}:${tag} registry.gcloud.srcb.com/${image}:${tag}
     docker push registry.gcloud.srcb.com/${image}:${tag}

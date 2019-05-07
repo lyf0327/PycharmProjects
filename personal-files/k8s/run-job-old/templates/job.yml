@@ -1,0 +1,149 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ template "run-job.fullname" . }}
+  labels:
+    app: {{ template "run-job.name" . }}
+    chart: {{ template "run-job.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    type: gpu-infra
+{{- with .Values.gpu }}
+{{- range $i, $v := . }}
+    gpu_type: "{{ $i }}"
+    gpu_count: "{{ $v }}"
+    gpu_use: "true"
+{{- end }}
+{{- end }}
+    project: {{ .Values.project }}
+    lab: {{ lower .Values.labName | splitList " " | join "-" }}
+    user: {{ lower .Values.userName | splitList " " | join "-" | replace "." "-" }}
+  namespace: {{ lower .Values.labName | splitList " " | join "-" }}
+spec:
+  backoffLimit: 3
+  activeDeadlineSeconds: {{ .Values.timeout }}
+  template:
+    metadata:
+      labels:
+        type: gpu-infra
+        lab: {{ lower .Values.labName | splitList " " | join "-" }}
+        user: {{ lower .Values.userName | splitList " " | join "-" | replace "." "-" }}
+        app: {{ template "run-job.name" . }}
+        project: {{ .Values.project }}
+{{- with .Values.gpu }}
+{{- range $i, $v := . }}
+        gpu_type: "{{ $i }}"
+        gpu_count: "{{ $v }}"
+        gpu_use: "true"
+{{- end }}
+{{- end }}
+    spec:
+      priorityClassName: {{ .Values.priority }}
+      restartPolicy: OnFailure
+      hostIPC: true
+      containers:
+      - name: run-job
+        image: {{ .Values.image }}
+        imagePullPolicy: Always
+{{- if not .Values.gpu }}
+        env:
+          - name: NVIDIA_VISIBLE_DEVICES
+            value: ""
+{{- else }}
+        env:
+          - name: NCCL_P2P_DISABLE
+            value: "1"
+          - name: NCCL_SHM_DISABLE
+            value: "0"
+{{- end }}
+        command:
+        - bash
+        - -c
+        - "/job.sh"
+        resources:
+          requests:
+            cpu: "{{ .Values.cpu }}"
+            memory: {{ .Values.memory }}
+          limits:
+{{- with .Values.gpu }}
+{{- range $i, $v := . }}
+            nvidia.com/gpu-{{ $i }}: "{{ $v }}"
+{{- end }}
+{{- end }}
+{{- if or (hasKey .Values.gpu "k80") (hasKey .Values.gpu "k80-1") }}
+            cpu: "32"
+            memory: "216Gi"
+{{- else if hasKey .Values.gpu "p40" }}
+            cpu: "38"
+            memory: "324Gi"
+{{- else if hasKey .Values.gpu "m40" }}
+            cpu: "32"
+            memory: "216Gi"
+{{- else }}
+            cpu: "32"
+            memory: "55Gi"
+{{- end }}
+        volumeMounts:
+        - mountPath: /root/.ssh_config
+          name: ssh-key
+        - mountPath: /data
+          name: data-pv
+        - mountPath: /common-data
+          name: common-data-pv
+{{- if .Values.ssd.enabled }}
+        - mountPath: /ssd
+          name: ssd
+{{- end }}
+{{- with .Values.volumeMounts }}
+{{ toYaml . | indent 8 }}
+{{- end }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+      volumes:
+      - name: ssh-key
+        configMap:
+          name: {{ lower .Values.userName | splitList " " | join "-" | replace "." "-" }}
+          items:
+          - key: ssh_public_key
+            path: authorized_keys
+      - name: data-pv
+        flexVolume:
+          driver: {{ .Values.flexVolume.driver }}
+          options:
+            monitors: {{ .Values.flexVolume.options.monitors }}
+            share: '/{{ lower .Values.userName | splitList " " | join "-" }}'
+            authid: {{ .Values.flexVolume.options.authid }}
+            mds: {{ .Values.flexVolume.options.mds }}
+            keyring: {{ .Values.flexVolume.options.keyring }}
+      - name: common-data-pv
+        flexVolume:
+          driver: {{ .Values.flexVolume.driver }}
+          options:
+            monitors: {{ .Values.flexVolume.options.monitors }}
+            share: '/common'
+            authid: {{ .Values.flexVolume.options.authid }}
+            mds: {{ .Values.flexVolume.options.mds }}
+            keyring: {{ .Values.flexVolume.options.keyring }}
+{{- if .Values.admin  }}
+            rights: 'rw'
+{{- else }}
+            rights: 'rw'
+{{- end }}
+{{- if .Values.ssd.enabled }}
+      - name: ssd
+        persistentVolumeClaim:
+          claimName: {{ .Values.ssd.pvcName }}
+{{- end }}
+{{- with .Values.volumes }}
+{{ toYaml . | indent 6 }}
+{{- end }}

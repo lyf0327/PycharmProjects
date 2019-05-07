@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: monitoring-gpugrafana
+  name: grafana-test
 spec:
   replicas: 1
   template:
@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: monitoring-gpugrafana
+  name: grafana-test
 spec:
   ports:
   - port: 80
